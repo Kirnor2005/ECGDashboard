@@ -9,8 +9,6 @@ with col2:
     
 with col1: 
     st.expander('Settings', icon="⚙️")
-    
-    import streamlit as st
 
     FILTERS = {
         "Geslacht": ["Man", "Vrouw", "Anders"],
