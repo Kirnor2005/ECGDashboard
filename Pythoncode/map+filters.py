@@ -1,68 +1,135 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
 
-st.set_page_config(layout="wide")
+# data
 
-col2, col1 = st.columns([4, 1])
+df = pd.read_csv('data_verwerkt_goedeversie.csv')
+
+# session state
+
+if 'pagina' not in st.session_state:
+    st.session_state.pagina = 'kaart'
+
+if 'wijken' not in st.session_state:
+    st.session_state.wijken = []
+
+if 'variabelen' not in st.session_state:
+    st.session_state.variabelen = []
+
+if 'taal' not in st.session_state:
+    st.session_state.taal = 'English'
+
+
+# layout
+
+col1, col2 = st.columns([1, 4])
+
+
+# linker kolom = filters
+
+
+with col1:
+
+    with st.expander('Options', expanded=True):
+        font = st.slider(
+            'letter grootte', 
+            min_value=2, 
+            max_value=26, 
+            value=12, 
+            step=2
+        )
+
+        taal = st.multiselect(
+            'Taal',
+            options=['Nederlands', 'English', 'العربية', 'Français', 'Español', 'Deutsch', 'Português', 'Русский', '中文 (Zhōngwén)', '日本語', '한국인'],
+            default=st.session_state.taal
+        )
+                     
+    with st.expander('Filters', expanded=True):
+
+        geselecteerde_wijken = st.multiselect(
+            'Kies wijken',
+            options=df['Wijk'].unique(),
+            default=st.session_state.wijken
+        )
+
+        geselecteerde_variabelen = st.multiselect(
+            'Kies variabelen',
+            options=df.columns[1:],
+            default=st.session_state.variabelen
+        )
+
+        # knop
+        if st.button('Toon resultaten'):
+
+            st.session_state.wijken = geselecteerde_wijken
+            st.session_state.variabelen = geselecteerde_variabelen
+
+            st.session_state.pagina = 'grafiek'
+
+            st.rerun()
+
+
+# rechter kolom
+
 
 with col2:
-    st.image('amsterdam-map.jpg')
-    
-with col1: 
-    st.expander('Settings', icon="⚙️")
 
-    FILTERS = {
-        "Geslacht": ["Man", "Vrouw", "Anders"],
-        "Leeftijd": ["40-50", "50-60", "60-70", "70+"],
-        "Wijk": [
-            "Sloterdijk Nieuw-West",
-            "Geuzenveld, Slotermeer",
-            "Osdorp",
-            "De Aker, Sloten, Nieuw-Sloten",
-            "Slotervaart",
-            "Westerpark",
-            "Bos en Lommer",
-            "Oud-West, De Baarsjes",
-            "Oud-Zuid",
-            "Buitenveldert",
-            "Amsterdamse Bos",
-            "Centrum-West",
-            "Centrum-Oost",
-            "Oud-Oost",
-            "De Pijp, Rivierenbuurt",
-            "Watergraafsmeer",
-            "Indische Buurt, Oostelijk Havengebied",
-            "Oud-Noord",
-            "Noord-West",
-            "Noord-Oost",
-            "IJburg, Zeeburgereiland",
-            "Bijlmer-Centrum",
-            "Bijlmer-West",
-            "Bijlmer-Oost",
-            "Gaasperdam",
-            "Weesp, Driemond",
-        ],
-        "Waarde": [
-            "Gem HR totaal",
-            "HRV",
-            "Bloeddruk (Bovendruk)",
-            "Cholesterol",
-            "Non-HDL",
-            "Bloedsuiker",
-            "BMI",
-        ],
-    }
+    # pagina 1 = kaart
 
-    gekozen_filters = st.multiselect(
-        "Filters",
-        options=list(FILTERS.keys())
-    )
+    if st.session_state.pagina == 'kaart':
 
-    geselecteerde_waardes = {
-        naam: st.multiselect(
-            f"Kies {naam}",
-            options=opties,
-            key=f"filter_{naam}"
+        st.title('Kaart van Amsterdam')
+
+        st.image(
+            'amsterdam-map.jpg',
+            use_container_width=True
         )
-        for naam, opties in FILTERS.items()
-        if naam in gekozen_filters
-    }
+
+
+    # pagina 2 = grafieken
+
+    elif st.session_state.pagina == 'grafiek':
+
+        st.title('Grafiek(en)')
+
+        # terug knop
+        if st.button('← Terug naar kaart'):
+
+            st.session_state.pagina = 'kaart'
+
+            st.rerun()
+
+        # geselecteerde data
+        filtered_df = df[
+            df['Wijk'].isin(st.session_state.wijken)
+        ]
+
+        # grafieken
+        if len(st.session_state.variabelen) > 0:
+
+            grafiek_cols = st.columns(
+                len(st.session_state.variabelen)
+            )
+
+            for i, variabele in enumerate(
+                st.session_state.variabelen
+            ):
+
+                fig = px.bar(
+                    filtered_df,
+                    x='Wijk',
+                    y=variabele,
+                    color='Wijk',
+                    title=f'{variabele.upper()} per wijk'
+                )
+
+                grafiek_cols[i].plotly_chart(
+                    fig,
+                    use_container_width=True
+                )
+
+        else:
+
+            st.warning('Selecteer minimaal één variabele.')
