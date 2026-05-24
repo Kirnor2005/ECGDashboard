@@ -1,0 +1,28 @@
+Uitleg waarden en afkortingen in excelbestand 'verwerkte_data.csv'
+
+
+Je ziet achter elke waarde een 1 of 2 staan, deze duiden op het meetmoment 1 was eerder in tijd dan 2.
+
+sdnn (Standard Deviation of Normal-to-Normal intervals, HRV, HartRitme Variabiliteit): geeft de variatie in tijd weer tussen opeenvolgende hartslagen in milliseconden. 
+Een hogere SDNN duidt doorgaans op een gezonde, veerkrachtige conditie.
+rmssd (Root Mean Square of Successive Differences, HRV): meet de variatie in tijd tussen opeenvolgende hartslagen, wat inzicht geeft in de activiteit van je zenuwstelsel. 
+hoger = beter
+nn50 = hoeveelheid opeenvolgende punten waar meer dan 50ms verschil zat in R-piek.
+pnn50 (HRV) = percentage van nn50
+
+HR = gemiddelde hart ritme
+MinHR = minimale voorgekomen hartslag
+MaxHR = maximale voorgekomen hartslag
+STDHR = standaarddeviatie van hartslag
+HR Diff = verschil in gemiddelde hartslag
+
+mvc = meest voorkomende waarde
+Bloeddruk is in mmHg
+Cholesterol is in mmol/L
+Non-HDL is in mmol/L
+Bloedsuiker is in mmol/L (normaal: nuchter 4.0-6.1 & niet-nuchter <7.8)
+BMI (Body Mass Index) bereken je door je gewicht (kg) te delen door het kwadraad van je lengte (m), als je 80kg weegt en 188cm lang ben doe je 80/1.88^2 ~ 22.63.
+een 'gezond' BMI voor volwassenen ligt tussen de 18.5 en 23 kg/m^2.
+
+BD = Bloeddruk, chol = Cholesterol en bs = Bloedsuiker
+c BD 1 gem betekend: gecodeerde (c) gemiddelde (gem) bloeddruk van de eerste/eerdere meting
