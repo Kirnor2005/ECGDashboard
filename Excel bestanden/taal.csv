@@ -1,0 +1,62 @@
+﻿Key;Nederlands;English;العربية;Français;Español;Deutsch;Português;Русский;中文（简体）;日本語;한국어
+ex sdnn_1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1;sdnn 1
+ex rmssd_1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1;rmssd 1
+ex nn50_1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1;nn50 1
+ex pnn50_1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1;pnn50 1
+ex sdnn_2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2;sdnn 2
+ex rmssd_2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2;rmssd 2
+ex nn50_2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2;nn50 2
+ex pnn50_2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2;pnn50 2
+ex HR1;Hartslag 1;Heart rate 1;معدل ضربات القلب 1;Fréquence cardiaque 1;Frecuencia cardíaca 1;Herzfrequenz 1;Frequência cardíaca 1;Частота сердечных сокращений 1;心率1;心拍数1;심박수 1
+ex HR2;Hartslag 2;Heart rate 2;معدل ضربات القلب 2;Fréquence cardiaque 2;Frecuencia cardíaca 2;Herzfrequenz 2;Frequência cardíaca 2;Частота сердечных сокращений 2;心率2;心拍数2;심박수 2
+ex MinHR1;Laagst gemeten hartslag 1;Lowest measured heart rate 1;أدنى معدل ضربات القلب المقاس 1;Fréquence cardiaque la plus basse mesurée 1;Frecuencia cardíaca más baja medida 1;Niedrigste gemessene Herzfrequenz 1;Frequência cardíaca mais baixa medida 1;Минимальная измеренная частота сердечных сокращений 1;最低测得心率1;測定された最低心拍数1;측정된 최저 심박수 1
+ex MinHR2;Laagst gemeten hartslag 2;Lowest measured heart rate 2;أدنى معدل ضربات القلب المقاس 2;Fréquence cardiaque la plus basse mesurée 2;Frecuencia cardíaca más baja medida 2;Niedrigste gemessene Herzfrequenz 2;Frequência cardíaca mais baixa medida 2;Минимальная измеренная частота сердечных сокращений 2;最低测得心率2;測定された最低心拍数2;측정된 최저 심박수 2
+ex MaxHR1;Hoogst gemeten hartslag 1;Highest measured heart rate 1;أعلى معدل ضربات القلب المقاس 1;Fréquence cardiaque la plus élevée mesurée 1;Frecuencia cardíaca más alta medida 1;Höchste gemessene Herzfrequenz 1;Frequência cardíaca mais alta medida 1;Максимальная измеренная частота сердечных сокращений 1;最高测得心率1;測定された最高心拍数1;측정된 최고 심박수 1
+ex MaxHR2;Hoogst gemeten hartslag 2;Highest measured heart rate 2;أعلى معدل ضربات القلب المقاس 2;Fréquence cardiaque la plus élevée mesurée 2;Frecuencia cardíaca más alta medida 2;Höchste gemessene Herzfrequenz 2;Frequência cardíaca mais alta medida 2;Максимальная измеренная частота сердечных сокращений 2;最高测得心率2;測定された最高心拍数2;측정된 최고 심박수 2
+ex STDHR1;Standaarddeviatie hartslag 1;STD heart rate 1;الانحراف المعياري لمعدل ضربات القلب 1;Écart-type de la fréquence cardiaque 1;Desviación estándar de la frecuencia cardíaca 1;Standardabweichung der Herzfrequenz 1;Desvio padrão da frequência cardíaca 1;Стандартное отклонение частоты сердечных сокращений 1;心率标准差1;心拍数の標準偏差1;심박수 표준편차 1
+ex STDHR2;Standaarddeviatie hartslag 2;STD heart rate 2;الانحراف المعياري لمعدل ضربات القلب 2;Écart-type de la fréquence cardiaque 2;Desviación estándar de la frecuencia cardíaca 2;Standardabweichung der Herzfrequenz 2;Desvio padrão da frequência cardíaca 2;Стандартное отклонение частоты сердечных сокращений 2;心率标准差2;心拍数の標準偏差2;심박수 표준편차 2
+ex HR Diff;Hartslagverschil;Heart rate Difference;فرق معدل ضربات القلب;Différence de fréquence cardiaque;Diferencia de frecuencia cardíaca;Herzfrequenzdifferenz;Diferença da frequência cardíaca;Разница частоты сердечных сокращений;心率差;心拍数の差;심박수 차이
+ex mvc bd1;Bloeddruk 1;Bloodpressure 1;ضغط الدم 1;Tension artérielle 1;Presión arterial 1;Blutdruck 1;Pressão arterial 1;Артериальное давление 1;血压1;血圧1;혈압 1
+ex mvc bd2;Bloeddruk 2;Bloodpressure 2;ضغط الدم 2;Tension artérielle 2;Presión arterial 2;Blutdruck 2;Pressão arterial 2;Артериальное давление 2;血压2;血圧2;혈압 2
+ex mvc ch1;Cholesterol 1;Cholesterol 1;الكوليسترول 1;Cholestérol 1;Colesterol 1;Cholesterin 1;Colesterol 1;Холестерин 1;胆固醇1;コレステロール1;콜레스테롤 1
+ex mvc ch2;Cholesterol 2;Cholesterol 2;الكوليسترول 2;Cholestérol 2;Colesterol 2;Cholesterin 2;Colesterol 2;Холестерин 2;胆固醇2;コレステロール2;콜레스테롤 2
+ex mvc non1;Non-HDL-cholesterol 1;Non-HDL 1;الكوليسترول غير HDL 1;Cholestérol non-HDL 1;Colesterol no HDL 1;Non-HDL-Cholesterin 1;Colesterol não-HDL 1;не-HDL холестерин 1;非HDL胆固醇1;非HDLコレステロール1;비HDL 콜레스테롤 1
+ex mvc non2;Non-HDL-cholesterol 2;Non-HDL 2;الكوليسترول غير HDL 2;Cholestérol non-HDL 2;Colesterol no HDL 2;Non-HDL-Cholesterin 2;Colesterol não-HDL 2;не-HDL холестерин 2;非HDL胆固醇2;非HDLコレステロール2;비HDL 콜레스테롤 2
+ex mvc bs1;Bloedsuiker 1;Bloodsugar 1;سكر الدم 1;Glycémie 1;Glucemia 1;Blutzucker 1;Glicemia 1;Уровень глюкозы в крови 1;血糖1;血糖値1;혈당 1
+ex mvc bs2;Bloedsuiker 2;Bloodsugar 2;سكر الدم 2;Glycémie 2;Glucemia 2;Blutzucker 2;Glicemia 2;Уровень глюкозы в крови 2;血糖2;血糖値2;혈당 2
+ex mvc bmi1;BMI 1;BMI 1;مؤشر كتلة الجسم 1;IMC 1;IMC 1;BMI 1;IMC 1;ИМТ 1;体质指数1;BMI1;BMI 1
+ex mvc bmi2;BMI 2;BMI 2;مؤشر كتلة الجسم 2;IMC 2;IMC 2;BMI 2;IMC 2;ИМТ 2;体质指数2;BMI2;BMI 2
+ex bd gem 1;Gemiddelde bloeddruk 1;Average bloodpressure 1;متوسط ضغط الدم 1;Tension artérielle moyenne 1;Presión arterial media 1;Durchschnittlicher Blutdruck 1;Pressão arterial média 1;Среднее артериальное давление 1;平均血压1;平均血圧1;평균 혈압 1
+ex bd gem 2;Gemiddelde bloeddruk 2;Average bloodpressure 2;متوسط ضغط الدم 2;Tension artérielle moyenne 2;Presión arterial media 2;Durchschnittlicher Blutdruck 2;Pressão arterial média 2;Среднее артериальное давление 2;平均血压2;平均血圧2;평균 혈압 2
+ex ch gem 1;Gemiddeld cholesterol 1;Average cholesterol 1;متوسط الكوليسترول 1;Cholestérol moyen 1;Colesterol medio 1;Durchschnittliches Cholesterin 1;Colesterol médio 1;Средний холестерин 1;平均胆固醇1;平均コレステロール1;평균 콜레스테롤 1
+ex ch gem 2;Gemiddeld cholesterol 2;Average cholesterol 2;متوسط الكوليسترول 2;Cholestérol moyen 2;Colesterol medio 2;Durchschnittliches Cholesterin 2;Colesterol médio 2;Средний холестерин 2;平均胆固醇2;平均コレステロール2;평균 콜레스테롤 2
+ex bs gem 1;Gemiddelde bloedsuiker 1;Average bloodsugar 1;متوسط سكر الدم 1;Glycémie moyenne 1;Glucemia media 1;Durchschnittlicher Blutzucker 1;Glicemia média 1;Средний уровень глюкозы в крови 1;平均血糖1;平均血糖値1;평균 혈당 1
+ex bs gem 2;Gemiddelde bloedsuiker 2;Average bloodsugar 2;متوسط سكر الدم 2;Glycémie moyenne 2;Glucemia media 2;Durchschnittlicher Blutzucker 2;Glicemia média 2;Средний уровень глюкозы в крови 2;平均血糖2;平均血糖値2;평균 혈당 2
+ex bmi gem 1;Gemiddelde BMI 1;Average BMI 1;متوسط مؤشر كتلة الجسم 1;IMC moyen 1;IMC medio 1;Durchschnittlicher BMI 1;IMC médio 1;Средний ИМТ 1;平均体质指数1;平均BMI1;평균 BMI 1
+ex bmi gem 2;Gemiddelde BMI 2;Average BMI 2;متوسط مؤشر كتلة الجسم 2;IMC moyen 2;IMC medio 2;Durchschnittlicher BMI 2;IMC médio 2;Средний ИМТ 2;平均体质指数2;平均BMI2;평균 BMI 2
+li inloggen;Inloggen;Login;تسجيل الدخول;Connexion;Iniciar sesión;Anmelden;Iniciar sessão;Войти;登录;ログイン;로그인
+li mail;E-mail;E-mail;البريد الإلكتروني;E-mail;Correo electrónico;E-Mail;E-mail;Электронная почта;电子邮件;メールアドレス;이메일
+li ww;Wachtwoord;Password;كلمة المرور;Mot de passe;Contraseña;Passwort;Senha;Пароль;密码;パスワード;비밀번호
+li suc;Succesvol ingelogd!;You've succesfully logged in!;لقد تم تسجيل دخولك بنجاح!;Vous vous êtes connecté avec succès !;¡Has iniciado sesión correctamente!;Sie haben sich erfolgreich angemeldet!;Você iniciou sessão com sucesso!;Вы успешно вошли в систему!;您已成功登录！;ログインに成功しました！;성공적으로 로그인되었습니다!
+li fout;Onjuiste e-mail of wachtwoord.;Incorrect e-mail or password;البريد الإلكتروني أو كلمة المرور غير صحيحة;E-mail incorrect;Correo electrónico o contraseña incorrectos;Falsche E-Mail oder falsches Passwort;E-mail ou senha incorretos;Неверный адрес электронной почты или пароль;电子邮件或密码错误;メールアドレスまたはパスワードが正しくありません;이메일 또는 비밀번호가 올바르지 않습니다
+li dash;Dashboard HARTstikke Gezond Week;Dashboard HARTstikke Gezond Week;لوحة التحكم HARTstikkegezond;Tableau de bord;Panel de control HARTstikkegezond;Dashboard HARTstikkegezond;Painel de controlo HARTstikkegezond;Панель управления HARTstikkegezond;HARTstikkegezond 仪表板;HARTstikkegezond ダッシュボード;HARTstikkegezond 대시보드
+li welkom;Welkom! Je bent ingelogd.;Welcome! You're logged-in;مرحبًا! لقد قمت بتسجيل الدخول;Bienvenue !;¡Bienvenido! Has iniciado sesión;Willkommen! Sie sind eingeloggt;Bem-vindo! Você iniciou sessão;Добро пожаловать! Вы вошли в систему;欢迎！您已登录;ようこそ！ログインしています;환영합니다! 로그인되었습니다
+li lu;Uitloggen;Logout;تسجيل الخروج;Déconnexion;Cerrar sesión;Abmelden;Terminar sessão;Выйти;退出登录;ログアウト;로그아웃
+li dash;Dashboard HARTstikke Gezond Week;Dashboard HARTstikke Gezond Week;لوحة التحكم HARTstikkegezond;Tableau de bord;Panel de control HARTstikkegezond;Dashboard HARTstikkegezond;Painel de controlo HARTstikkegezond;Панель управления HARTstikkegezond;HARTstikkegezond 仪表板;HARTstikkegezond ダッシュボード;HARTstikkegezond 대시보드
+mp Opties;Opties;Options;الخيارات;Options;Opciones;Optionen;Opções;Настройки;选项;オプション;옵션
+mp lett;Letter grootte;Font size;حجم الخط;Taille de police;Tamaño de fuente;Schriftgröße;Tamanho da fonte;Размер шрифта;字体大小;フォントサイズ;글꼴 크기
+mp taal;Taal;Language;اللغة;Langue;Idioma;Sprache;Idioma;Язык;语言;言語;언어
+mp filter;Filters;Filters;عوامل التصفية;Filtres;Filtros;Filter;Filtros;Фильтры;筛选条件;フィルター;필터
+mp wijk g;Kies wijken voor grafiek;Choose neighborhood(s) for graph;اختر الحي/الأحياء للرسم البياني;Choisissez des quartiers pour le graphique;Elija barrio(s) para el gráfico;Stadtteil(e) für das Diagramm auswählen;Escolha bairro(s) para o gráfico;Выберите район(ы) для графика;选择用于图表的社区;グラフ用の地区を選択;그래프에 사용할 지역 선택
+mp kies v;Kies variabelen;Choose variables;اختر المتغيرات;Choisissez des variables;Elegir variables;Variablen auswählen;Escolher variáveis;Выберите переменные;选择变量;変数を選択;변수 선택
+mp toon g;Toon grafiek(en);Show graph;عرض الرسم البياني;Afficher le graphique;Mostrar gráfico(s);Diagramm(e) anzeigen;Mostrar gráfico(s);Показать график(и);显示图表;グラフを表示;그래프 표시
+mp wijk t;Kies wijken voor tabel;Choose neighborhood(s) for table;اختر الحي/الأحياء للجدول;Choisissez un ou plusieurs quartiers pour le tableau;Elija barrio(s) para la tabla;Stadtteil(e) für die Tabelle auswählen;Escolha bairro(s) para a tabela;Выберите район(ы) для таблицы;选择用于表格的社区;表用の地区を選択;표에 사용할 지역 선택
+mp mvc;Kies meest voorkomende categorie(ën);Choose most frequent categorie(s);اختر الفئات الأكثر تكرارًا;Choisissez la ou les catégories les plus fréquentes;Elegir las categorías más frecuentes;Häufigste Kategorien auswählen;Escolha as categorias mais frequentes;Выберите наиболее частые категории;选择最常见的类别;最も頻度の高いカテゴリを選択;가장 빈도가 높은 카테고리 선택
+mp toon t;Toon tabel;Show table;عرض الجدول;Afficher le tableau;Mostrar tabla;Tabelle anzeigen;Mostrar tabela;Показать таблицу;显示表格;表を表示;표 표시
+mp tit kaart;Kaart van Amsterdam;Map of Amsterdam;خريطة أمستردام;Carte d’Amsterdam;Mapa de Ámsterdam;Karte von Amsterdam;Mapa de Amesterdão;Карта Амстердама;阿姆斯特丹地图;アムステルダムの地図;암스테르담 지도
+gr tit g;Grafiek(en);Graph(s);الرسوم البيانية;Graphique(s);Gráfico(s);Diagramm(e);Gráfico(s);График(и);图表;グラフ;그래프
+gr but terug;← Terug naar kaart;← Back to map;→ العودة إلى الخريطة;← Retour à la carte;← Volver al mapa;← Zurück zur Karte;← Voltar ao mapa;← Назад к карте;← 返回地图;← 地図に戻る;← 지도로 돌아가기
+gr war 1 v;Selecteer minimaal één variabele;Select at least one variable;اختر متغيرًا واحدًا على الأقل;Sélectionnez au moins une variable;Seleccione al menos una variable;Wählen Sie mindestens eine Variable aus;Selecione pelo menos uma variável;Выберите хотя бы одну переменную;至少选择一个变量;少なくとも1つの変数を選択してください;최소 한 개의 변수를 선택하세요
+ta tit tab;Tabel;Table;جدول;Tableau;Tabla;Tabelle;Tabela;Таблица;表格;表;표
+ta but terug;← Terug naar kaart;← Back to map;→ العودة إلى الخريطة;← Retour à la carte;← Volver al mapa;← Zurück zur Karte;← Voltar ao mapa;← Назад к карте;← 返回地图;← 地図に戻る;← 지도로 돌아가기
+ta war 1 v;Selecteer minimaal één variabele;Select at least one variable;اختر متغيرًا واحدًا على الأقل;Sélectionnez au moins une variable;Seleccione al menos una variable;Wählen Sie mindestens eine Variable aus;Selecione pelo menos uma variável;Выберите хотя бы одну переменную;至少选择一个变量;少なくとも1つの変数を選択してください;최소 한 개의 변수를 선택하세요
