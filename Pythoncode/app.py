@@ -54,9 +54,9 @@ div[data-testid="stAlert"] {
 </style>
 """, unsafe_allow_html=True)
 
-df = pd.read_csv('verwerkte_data.csv')
+df = pd.read_csv('Excel bestanden/verwerkte_data.csv')
 
-talen = pd.read_csv("taal.csv", sep=';')
+talen = pd.read_csv('Excel bestanden/taal.csv', sep=';')
 talen.columns = talen.columns.str.strip()
 talen['key'] = talen['key'].str.strip()
 talen = talen.set_index('key')
