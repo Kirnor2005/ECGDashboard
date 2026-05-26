@@ -238,8 +238,12 @@ with col2:
                     x='Wijk',
                     y=variabele,
                     color='Wijk',
-                    title=f"{talen.loc[variabele_key, st.session_state.taal]} per wijk"
+                    title=f"{talen.loc[variabele_key, st.session_state.taal]} {t('gr per wijk')}",
+
+                    labels={variabele: talen.loc[variabele_key, st.session_state.taal]}
                 )
+
+                fig.update_layout(xaxis_title=t('ta wijk'), yaxis_title=talen.loc[variabele_key, st.session_state.taal], legend_title=t('ta wijk'))
 
                 grafiek_cols[i].plotly_chart(
                     fig,
