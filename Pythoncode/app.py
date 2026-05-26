@@ -363,7 +363,7 @@ def main_app():
             st.title(t('mp tit kaart'))
     
             st.image(
-                'amsterdam-map.jpg',
+                'Pythoncode/amsterdam-map.jpg',
                 use_container_width=True
             )
     
