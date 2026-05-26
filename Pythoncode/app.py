@@ -54,9 +54,19 @@ div[data-testid="stAlert"] {
 </style>
 """, unsafe_allow_html=True)
 
-df = pd.read_csv('Excel bestanden/verwerkte_data.csv')
+BASE_DIR = Path(__file__).resolve().parent
 
-talen = pd.read_csv('Excel bestanden/taal.csv', sep=';')
+@st.cache_data
+def load_data():
+    return pd.read_csv(BASE_DIR.parent / "excelbestanden" / "verwerkte_data.csv")
+
+@st.cache_data
+def load_talen():
+    return pd.read_csv(BASE_DIR.parent / "excelbestanden" / "talen.csv")
+
+df = load_data()
+talen = load_talen()
+
 talen.columns = talen.columns.str.strip()
 talen['key'] = talen['key'].str.strip()
 talen = talen.set_index('key')
