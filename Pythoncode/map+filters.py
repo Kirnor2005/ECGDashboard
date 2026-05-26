@@ -8,14 +8,51 @@ st.set_page_config(layout="wide")
 
 df = pd.read_csv('verwerkte_data.csv')
 
-# talen = csv met talen en alle tekst: [key Nederlands English العربية, map kaart map بطاقة, etc.]
-# en dan bij tekst talen.loc["map", st.session_state.taal]
 
-# of met functie: 
-# def t(key):
-#     return talen.loc[key, st.session_state.taal]
-# 
-# st.title(t("map"))
+talen = pd.read_csv("taal.csv", sep=';')
+talen.columns = talen.columns.str.strip()
+talen['key'] = talen['key'].str.strip()
+talen = talen.set_index('key')
+
+# Voor tabel: naam die je terugkrijgt in sessionstate naar naam die gebruikt wordt in het excelbestand verwerkte_data.csv (df)
+mapping = {
+    'ex sdnn_1': 'sdnn_1', 
+    'ex rmssd_1': 'rmssd_1', 
+    'ex nn50_1': 'nn50_1', 
+    'ex pnn50_1': 'pnn50_1', 
+    'ex sdnn_2': 'sdnn_2', 
+    'ex rmssd_2': 'rmssd_2', 
+    'ex nn50_2': 'nn50_2', 
+    'ex pnn50_2': 'pnn50_2', 
+    'ex HR1': 'HR1', 
+    'ex HR2': 'HR2', 
+    'ex MinHR1': 'MinHR1', 
+    'ex MinHR2': 'MinHR2', 
+    'ex MaxHR1': 'MaxHR1',
+    'ex MaxHR2': 'MaxHR2', 
+    'ex STDHR1': 'STDHR1', 
+    'ex STDHR2': 'STDHR2', 
+    'ex HR Diff': 'HR Diff', 
+    'ex mvc bd1': 'mvc Bloeddruk (Bovendruk) 1', 
+    'ex mvc bd2': 'mvc Bloeddruk (Bovendruk) 2', 
+    'ex mvc ch1': 'mvc Cholesterol 1', 
+    'ex mvc ch2': 'mvc Cholesterol 2', 
+    'ex mvc non1': 'mvc Non-HDL 1', 
+    'ex mvc non2': 'mvc Non-HDL 2', 
+    'ex mvc bs1': 'mvc Bloedsuiker 1', 
+    'ex mvc bs2': 'mvc Bloedsuiker 2', 
+    'ex mvc bmi1': 'mvc BMI 1', 
+    'ex mvc bmi2': 'mvc BMI 2', 
+    'ex bd gem 1': 'c BD 1 gem', 
+    'ex bd gem 2': 'c BD 2 gem', 
+    'ex ch gem 1': 'c chol1 gem', 
+    'ex ch gem 2': 'c chol2 gem', 
+    'ex bs gem 1': 'c bs1 gem', 
+    'ex bs gem 2': 'c bs2 gem', 
+    'ex bmi gem 1': 'c bmi1 gem', 
+    'ex bmi gem 2': 'c bmi2 gem'
+}
+
 
 # session state
 
@@ -38,6 +75,11 @@ if 'mvc' not in st.session_state:
     st.session_state.mvc = []
 
 
+#functie die ervoor zorgt dat het makkelijker is om tussen talen te switchen dan hoef je niet elke keer talen.loc['key', st.session_state.taal] te typen
+def t(key):
+    return talen.loc[key, st.session_state.taal]
+
+
 # layout
 
 col1, col2 = st.columns([1, 4], vertical_alignment="top")
@@ -50,51 +92,62 @@ with col1:
 
     st.markdown("<div style='height: 5rem'></div>", unsafe_allow_html=True)
 
-    with st.expander('Options', expanded=False):
+    with st.expander(t('mp Opties'), expanded=False):
         font = st.slider(
-            'letter grootte', 
+            t('mp lett'), 
             min_value=2, 
             max_value=26, 
             value=12, 
             step=2
         )
 
-        taal = st.selectbox('Taal', 
-                            options=['Nederlands', 'English', 'العربية', 'Français', 'Español', 'Deutsch', 'Português', 'Русский', '中文 (Zhōngwén)', '日本語', '한국인'], 
-                            index=1  # English
-                           )
+        talen_opties = [
+            'Nederlands',
+            'English',
+            'العربية',
+            'Français',
+            'Español',
+            'Deutsch',
+            'Português',
+            'Русский',
+            '中文',
+            '日本語',
+            '한국인'
+        ]
+
+        selectionbox = st.selectbox(
+            t('mp taal'),
+            options=talen_opties,
+            index=talen_opties.index(st.session_state.taal),
+            key='taal'
+        )
+        
                      
-    with st.expander('Filters', expanded=False): # beide de grafiek en tabel kunnen in een st.container (?)
+    with st.expander(t('mp filter'), expanded=False): # beide de grafiek en tabel kunnen in een st.container (?)
 
         geselecteerde_wijken_grafiek = st.multiselect(
-            'Kies wijken voor grafiek',
+            t('mp wijk g'),
             options=df['Wijk'].unique(),
-            default=st.session_state.wijken_graf
+            default=st.session_state.wijken_graf,
+            placeholder=t('menu co')
         )
 
-        exclude = ['Wijk',
-                   'mvc Bloeddruk (Bovendruk) 1', 
-                   'mvc Bloeddruk (Bovendruk) 2', 
-                   'mvc Cholesterol 1', 
-                   'mvc Cholesterol 2', 
-                   'mvc Non-HDL 1', 
-                   'mvc Non-HDL 2', 
-                   'mvc Bloedsuiker 1', 
-                   'mvc Bloedsuiker 2',
-                   'mvc BMI 1',
-                   'mvc BMI 2'
-                  ]
 
-        options = [col for col in df.columns if col not in exclude]
+        var_keys = pd.concat([talen.loc["ex sdnn_1":"ex HR Diff"],talen.loc["ex bd gem 1":"ex bmi gem 2"]]).index.tolist()
 
-        geselecteerde_variabelen = st.multiselect(
-            'Kies variabelen',
-            options=options,
-            default=[v for v in st.session_state.variabelen if v in options]
-        )
+        geselecteerde_variabelen = st.multiselect(t('mp kies v'), #return = keys van geselecteerde waarden, dus niet de waarden die de gebruiker ziet.
+                                                  options=var_keys, #lijst met opties
+                                                  default=st.session_state.variabelen, #als er niks gekozen is, is het leeg
+                                                  format_func=lambda x: talen.loc[x, st.session_state.taal], 
+                                                  placeholder=t('menu co')
+                                                 )
+
+        
+        
+       
 
         # knop
-        if st.button('Toon grafiek(en)'):
+        if st.button(t('mp toon g')):
 
             st.session_state.wijken_graf = geselecteerde_wijken_grafiek
             st.session_state.variabelen = geselecteerde_variabelen
@@ -104,28 +157,26 @@ with col1:
             st.rerun()
 
         geselecteerde_wijken_tabel = st.multiselect(
-            'Kies wijken voor tabel',
+            t('mp wijk t'),
             options=df['Wijk'].unique(),
-            default=st.session_state.wijken_tab
+            default=st.session_state.wijken_tab,
+            placeholder=t('menu co')
         )
 
-        meest_voorkomende_categorieën = st.multiselect('Kies meest voorkomende categorie(ën)',
-                                                   options=[
-                                                   'Bloeddruk (Bovendruk) 1', 
-                                                   'Bloeddruk (Bovendruk) 2', 
-                                                   'Cholesterol 1', 
-                                                   'Cholesterol 2', 
-                                                   'Non-HDL 1',
-                                                   'Non-HDL 2',
-                                                   'Bloedsuiker 1', 
-                                                   'Bloedsuiker 2', 
-                                                   'BMI 1', 
-                                                   'BMI 2'
-                                                   ],
-                                                   default=st.session_state.mvc
-                                                  )
+
+        # zorgt ervoor dat de keys die nu indexes zijn in een lijst worden gezet
+        mvc_keys = talen.loc["ex mvc bd1":"ex mvc bmi2"].index.tolist()
+
+
+        meest_voorkomende_categorieën = st.multiselect(t('mp mvc'), # return = keys van geselecteerde waarden, dus niet de waarden die de gebruiker ziet.
+                                                       options=mvc_keys, #lijst met opties
+                                                       default=st.session_state.mvc, #als er niks gekozen is, is het leeg
+                                                       format_func=lambda x: talen.loc[x, st.session_state.taal], #
+                                                       placeholder=t('menu co')
+                                                      )
+        
         # knop
-        if st.button('Toon tabel'):
+        if st.button(t('mp toon t')):
 
             st.session_state.wijken_tab = geselecteerde_wijken_tabel
             st.session_state.mvc = meest_voorkomende_categorieën
@@ -144,7 +195,7 @@ with col2:
 
     if st.session_state.pagina == 'kaart':
 
-        st.title('Kaart van Amsterdam')
+        st.title(t('mp tit kaart'))
 
         st.image(
             'amsterdam-map.jpg',
@@ -156,10 +207,10 @@ with col2:
 
     elif st.session_state.pagina == 'grafiek':
 
-        st.title('Grafiek(en)')
+        st.title(t('gr tit g'))
 
         # terug knop
-        if st.button('← Terug naar kaart'):
+        if st.button(t('gr but terug')):
 
             st.session_state.pagina = 'kaart'
 
@@ -171,22 +222,23 @@ with col2:
         ]
 
         # grafieken
-        if len(st.session_state.variabelen) > 0:
+        if len(st.session_state.variabelen) > 0: 
 
-            grafiek_cols = st.columns(
-                len(st.session_state.variabelen)
-            )
+            grafiek_cols = st.columns(len(st.session_state.variabelen)) # zorgt ervoor dat er zoveel grafieken naast elkaar komen als er gekozen zijn dus als 
+                                                                        # er 4 variabelen zijn gekozen heb je 4 kolommen (4 grafieken naast elkaar
 
-            for i, variabele in enumerate(
-                st.session_state.variabelen
-            ):
+            for i, variabele_key in enumerate(st.session_state.variabelen): # enumerate geeft zowel de index als het element terug
+                                                                            # dus: for index, element in st.session_state.variabelen
+                
+                # vertaling naar dataframe kolomnaam
+                variabele = mapping[variabele_key]
 
                 fig = px.bar(
                     filtered_df_graf,
                     x='Wijk',
                     y=variabele,
                     color='Wijk',
-                    title=f'{variabele.upper()} per wijk'
+                    title=f"{talen.loc[variabele_key, st.session_state.taal]} per wijk"
                 )
 
                 grafiek_cols[i].plotly_chart(
@@ -196,37 +248,40 @@ with col2:
 
         else:
 
-            st.warning('Selecteer minimaal één variabele.')
+            st.warning(t('gr war 1 v'))
+            
 
 #_____________________________________________________________________________________
     # pagina 3 = tabellen (tijdelijke visualisatie, Nina mag alles netjes gaan zetten :)), miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
     # af en toe zit er een waarde in het tabel die een beetje ~wonkie~ is lol, geen idee waar dit door komt, miss door de manier hoe ik de tabellen op het gezet (?)
-    
+    # Ik heb het idee dat alle waarden met > ervoor dus ~wonkie~ worden, succes!!!
+
+
     elif st.session_state.pagina == 'tabel':
 
-        st.title('tabel(len)')
+        st.title(t('ta tit tab')) #lol
 
         # terug knop
-        if st.button('← Terug naar kaart'):
+        if st.button(t('ta but terug')):
 
             st.session_state.pagina = 'kaart'
 
             st.rerun()
-
-        # geselecteerde data
-        filtered_df_tab = df[df['Wijk'].isin(st.session_state.wijken_tab)]
-
+            
+    
         # tabellen
         if len(st.session_state.mvc) > 0:
 
-            kolommen = ['Wijk'] + [f'mvc {mvc}' for mvc in st.session_state.mvc]
+            gekozen_kolommen = [mapping[k] for k in st.session_state.mvc if k in mapping]
 
-            kolommen = [k for k in kolommen if k in filtered_df_tab.columns]
+            # filter op geselecteerde wijken
+            df_tabel = df[df['Wijk'].isin(st.session_state.wijken_tab)][['Wijk'] + gekozen_kolommen].copy()
 
-            st.table(filtered_df_tab[kolommen])
-        
-        
+            nieuwe_kolomnamen = ([t('ta wijk')] + [talen.loc[mvc, st.session_state.taal] for mvc in st.session_state.mvc if mvc in mapping])
+
+            df_tabel.columns = nieuwe_kolomnamen
+
+            st.table(df_tabel)
 
         else:
-
-            st.warning('Selecteer minimaal één variabele.')
+            st.warning(t('ta war 1 v'))
