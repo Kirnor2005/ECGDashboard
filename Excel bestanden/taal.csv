@@ -57,6 +57,7 @@ mp tit kaart;Kaart van Amsterdam;Map of Amsterdam;خريطة أمستردام;Ca
 gr tit g;Grafiek(en);Graph(s);الرسوم البيانية;Graphique(s);Gráfico(s);Diagramm(e);Gráfico(s);График(и);图表;グラフ;그래프
 gr but terug;← Terug naar kaart;← Back to map;→ العودة إلى الخريطة;← Retour à la carte;← Volver al mapa;← Zurück zur Karte;← Voltar ao mapa;← Назад к карте;← 返回地图;← 地図に戻る;← 지도로 돌아가기
 gr war 1 v;Selecteer minimaal één variabele;Select at least one variable;اختر متغيرًا واحدًا على الأقل;Sélectionnez au moins une variable;Seleccione al menos una variable;Wählen Sie mindestens eine Variable aus;Selecione pelo menos uma variável;Выберите хотя бы одну переменную;至少选择一个变量;少なくとも1つの変数を選択してください;최소 한 개의 변수를 선택하세요
+gr per wijk;per wijk;per district;لكل حي;par quartier;por barrio;pro Stadtteil;por bairro;по району;按街区;地区ごと;구역별
 ta tit tab;Tabel;Table;جدول;Tableau;Tabla;Tabelle;Tabela;Таблица;表格;表;표
 ta but terug;← Terug naar kaart;← Back to map;→ العودة إلى الخريطة;← Retour à la carte;← Volver al mapa;← Zurück zur Karte;← Voltar ao mapa;← Назад к карте;← 返回地图;← 地図に戻る;← 지도로 돌아가기
 ta war 1 v;Selecteer minimaal één variabele;Select at least one variable;اختر متغيرًا واحدًا على الأقل;Sélectionnez au moins une variable;Seleccione al menos una variable;Wählen Sie mindestens eine Variable aus;Selecione pelo menos uma variável;Выберите хотя бы одну переменную;至少选择一个变量;少なくとも1つの変数を選択してください;최소 한 개의 변수를 선택하세요
