@@ -143,7 +143,7 @@ def t(key):
 #"hartstikke-gezondweek.png"
 
 def login_screen():
-    st.image('hartstikke-gezondweek.png', width=200)
+    st.image('Pythoncode/hartstikke-gezondweek.png', width=200)
 
     st.title(t('li inloggen'))
 
