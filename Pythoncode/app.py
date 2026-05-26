@@ -59,11 +59,11 @@ BASE_DIR = Path(__file__).resolve().parent
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(BASE_DIR.parent / "excelbestanden" / "verwerkte_data.csv")
+    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "verwerkte_data.csv")
 
 @st.cache_data
 def load_talen():
-    return pd.read_csv(BASE_DIR.parent / "excelbestanden" / "talen.csv", sep=';')
+    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "talen.csv", sep=';')
 
 df = load_data()
 talen = load_talen()
