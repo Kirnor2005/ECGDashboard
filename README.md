@@ -7,7 +7,7 @@ Getting started (still in progress)
 Help (still in progress)
 
 Authors:
-Alicia Pezzi Martins da Silveira Mart
+Alicia Pezzi
 Nina Raju
 Rik Noorman
 Soufiane El Omari
