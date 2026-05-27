@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
-
+import geopandas as gpd
 st.markdown("""
 <style>
 /* Afbeelding container zelf centreren */
@@ -354,18 +354,27 @@ def main_app():
     # rechter kolom
     
     
-    with col2:
+ with col2:
+
+    # pagina 1 = kaart
     
-        # pagina 1 = kaart
-    
-        if st.session_state.pagina == 'kaart':
-    
-            st.title(t('mp tit kaart'))
-    
-            st.image(
-                'Pythoncode/amsterdam-map.jpg',
-                use_container_width=True
-            )
+    buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
+    if st.session_state.pagina == 'kaart':
+        
+        fig2 = px.choropleth_mapbox(
+            buurten,
+            geojson=buurten.__geo_interface__,
+            locations=buurten.index,
+            featureidkey="id", 
+            color=buurten.index,
+            hover_name = 'Gebied',
+            mapbox_style="carto-positron",
+            zoom=10,
+            center={"lat": 52.37, "lon": 4.89},
+            opacity=0.6,
+        )
+
+        st.plotly_chart(fig2, use_container_width=True)
     
     #_____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
