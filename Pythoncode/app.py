@@ -354,7 +354,7 @@ def main_app():
     # rechter kolom
     
     
-     with col2:
+    with col2:
 
         # pagina 1 = kaart
     
