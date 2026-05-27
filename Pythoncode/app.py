@@ -111,7 +111,7 @@ mapping = {
     'ex bmi gem 2': 'c bmi2 gem'
 }
 
-CORRECT_EMAIL = "jan_pieters@gmail.com"
+CORRECT_EMAIL = "jeemail@gmail.com"
 CORRECT_PASSWORD = "Hartstikke_gezond123"
 
 if "logged_in" not in st.session_state:
