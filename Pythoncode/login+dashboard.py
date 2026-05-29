@@ -28,6 +28,16 @@ h1, h2, h3, p, label {
     text-align: center !important;
 }
 
+/* Login titel exact centreren */
+.login-title {
+    width: 100%;
+    text-align: center !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+}
+
 /* Input labels centreren */
 div[data-testid="stTextInput"] label {
     display: flex;
@@ -35,19 +45,18 @@ div[data-testid="stTextInput"] label {
 }
 
 /* Input tekst centreren */
-div[data-testid="stTextInput"] input[type="text"] {
+div[data-testid="stTextInput"] input {
     text-align: center !important;
-    padding-left: 3rem !important;
-    padding-right: 3rem !important;
     box-sizing: border-box !important;
-}
-
-/* Wachtwoordveld exact op dezelfde midden-as */
-div[data-testid="stTextInput"] input[type="password"] {
-    text-align: center !important;
     padding-left: 4.5rem !important;
     padding-right: 4.5rem !important;
-    box-sizing: border-box !important;
+}
+
+/* Verberg alleen de tekst "Press Enter to submit form", niet het oogje */
+div[data-testid="InputInstructions"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
 }
 
 /* Knoppen centreren */
@@ -171,7 +180,7 @@ def login_screen():
     centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
     st.markdown(
-        "<h1 style='text-align: center; width: 100%; margin: 0 auto 0.5rem auto;'>Inloggen</h1>",
+        "<h1 class='login-title'>Inloggen</h1>",
         unsafe_allow_html=True
     )
 
