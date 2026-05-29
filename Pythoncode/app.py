@@ -259,11 +259,24 @@ def main_app():
     
         with st.expander(t('mp Opties'), expanded=False):
             font = st.slider(
-                t('mp lett'), 
-                min_value=2, 
-                max_value=26, 
-                value=12, 
-                step=2
+                label=t('mp lett'), 
+                min_value=0.2, 
+                max_value=3.5, 
+                value=st.session_state.fontsize_scale, 
+                step=0.1, 
+                key='fontsize_scale')
+
+            scale = st.session_state.fontsize_scale
+
+            st.markdown(
+                f"""
+                <style>
+                html, body, [class*="css"] {{
+                font-size: {16 * scale}px;
+                }}
+                </style>
+                """,
+                unsafe_allow_html=True
             )
     
             talen_opties = [
