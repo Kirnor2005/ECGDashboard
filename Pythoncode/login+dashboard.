@@ -35,10 +35,19 @@ div[data-testid="stTextInput"] label {
 }
 
 /* Input tekst centreren */
-div[data-testid="stTextInput"] input {
+div[data-testid="stTextInput"] input[type="text"] {
     text-align: center !important;
     padding-left: 3rem !important;
     padding-right: 3rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Wachtwoordveld exact op dezelfde midden-as */
+div[data-testid="stTextInput"] input[type="password"] {
+    text-align: center !important;
+    padding-left: 4.5rem !important;
+    padding-right: 4.5rem !important;
+    box-sizing: border-box !important;
 }
 
 /* Knoppen centreren */
@@ -161,7 +170,10 @@ def centered_image(image_path, width=200):
 def login_screen():
     centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
-    st.title("Inloggen")
+    st.markdown(
+        "<h1 style='text-align: center; width: 100%; margin: 0 auto 0.5rem auto;'>Inloggen</h1>",
+        unsafe_allow_html=True
+    )
 
     with st.form("login_form"):
         email = st.text_input("E-mail")
@@ -436,5 +448,3 @@ if st.session_state.logged_in:
     main_app()
 else:
     login_screen()
-
-    
