@@ -28,14 +28,15 @@ h1, h2, h3, p, label {
     text-align: center !important;
 }
 
-/* Login titel exact centreren */
-.login-title {
+/* Login titel exact centreren zonder Streamlit anchor/link-icoontje */
+.login-title-text {
     width: 100%;
     text-align: center !important;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0.5rem;
+    margin: 0 auto 1rem auto;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 /* Input labels centreren */
@@ -45,11 +46,11 @@ div[data-testid="stTextInput"] label {
 }
 
 /* Input tekst centreren */
-div[data-testid="stTextInput"] input {
+div[data-testid="stTextInput"] div[data-baseweb="input"] input {
     text-align: center !important;
     box-sizing: border-box !important;
-    padding-left: 4.5rem !important;
-    padding-right: 4.5rem !important;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
 }
 
 /* Verberg alleen de tekst "Press Enter to submit form", niet het oogje */
@@ -57,6 +58,34 @@ div[data-testid="InputInstructions"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
+}
+
+/* Wachtwoordveld: maak links een onzichtbare ruimte even groot als het oogje rechts */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] {
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Onzichtbare linker-balans voor het oogje rechts */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"]::before {
+    content: "";
+    display: block;
+    width: 2.75rem;
+    min-width: 2.75rem;
+    height: 100%;
+}
+
+/* Wachtwoord-input zelf exact centreren tussen linker-balans en oogje */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] input {
+    text-align: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Oogje rechts vaste breedte geven */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] button {
+    width: 2.75rem !important;
+    min-width: 2.75rem !important;
 }
 
 /* Knoppen centreren */
@@ -180,7 +209,7 @@ def login_screen():
     centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
     st.markdown(
-        "<h1 class='login-title'>Inloggen</h1>",
+        "<div class='login-title-text'>Inloggen</div>",
         unsafe_allow_html=True
     )
 
