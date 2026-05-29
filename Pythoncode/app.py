@@ -166,81 +166,6 @@ def main_app():
 
     st.set_page_config(layout="wide")
     
-    # data
-    
-    #df = pd.read_csv('verwerkte_data.csv')
-    
-    
-    #talen = pd.read_csv("taal.csv", sep=';')
-    #talen.columns = talen.columns.str.strip()
-    #talen['key'] = talen['key'].str.strip()
-    #talen = talen.set_index('key')
-    
-    # Voor tabel: naam die je terugkrijgt in sessionstate naar naam die gebruikt wordt in het excelbestand verwerkte_data.csv (df)
-    #mapping = {
-    #    'ex sdnn_1': 'sdnn_1', 
-    #    'ex rmssd_1': 'rmssd_1', 
-    #    'ex nn50_1': 'nn50_1', 
-    #    'ex pnn50_1': 'pnn50_1', 
-    #    'ex sdnn_2': 'sdnn_2', 
-    #    'ex rmssd_2': 'rmssd_2', 
-    #    'ex nn50_2': 'nn50_2', 
-    #    'ex pnn50_2': 'pnn50_2', 
-    #    'ex HR1': 'HR1', 
-    #    'ex HR2': 'HR2', 
-    #    'ex MinHR1': 'MinHR1', 
-    #    'ex MinHR2': 'MinHR2', 
-    #    'ex MaxHR1': 'MaxHR1',
-    #    'ex MaxHR2': 'MaxHR2', 
-    #    'ex STDHR1': 'STDHR1', 
-    #    'ex STDHR2': 'STDHR2', 
-    #    'ex HR Diff': 'HR Diff', 
-   #     'ex mvc bd1': 'mvc Bloeddruk (Bovendruk) 1', 
-   #     'ex mvc bd2': 'mvc Bloeddruk (Bovendruk) 2', 
-   #     'ex mvc ch1': 'mvc Cholesterol 1', 
-   #     'ex mvc ch2': 'mvc Cholesterol 2', 
-   #     'ex mvc non1': 'mvc Non-HDL 1', 
-   #     'ex mvc non2': 'mvc Non-HDL 2', 
-   #     'ex mvc bs1': 'mvc Bloedsuiker 1', 
-   #     'ex mvc bs2': 'mvc Bloedsuiker 2', 
-   #     'ex mvc bmi1': 'mvc BMI 1', 
-   #     'ex mvc bmi2': 'mvc BMI 2', 
-   #     'ex bd gem 1': 'c BD 1 gem', 
-   #     'ex bd gem 2': 'c BD 2 gem', 
-   #     'ex ch gem 1': 'c chol1 gem', 
-   #     'ex ch gem 2': 'c chol2 gem', 
-   #     'ex bs gem 1': 'c bs1 gem', 
-   #     'ex bs gem 2': 'c bs2 gem', 
-   #     'ex bmi gem 1': 'c bmi1 gem', 
-   #     'ex bmi gem 2': 'c bmi2 gem'
-   # }
-    
-    
-    # session state
-    
-    #if 'pagina' not in st.session_state:
-     #   st.session_state.pagina = 'kaart'
-    
-    #if 'wijken_graf' not in st.session_state:
-     #   st.session_state.wijken_graf = []
-    
-    #if 'wijken_tab' not in st.session_state:
-     #   st.session_state.wijken_tab = []
-    
-    #if 'variabelen' not in st.session_state:
-     #   st.session_state.variabelen = []
-    
-    #if 'taal' not in st.session_state:
-     #   st.session_state.taal = 'English'
-    
-    #if 'mvc' not in st.session_state:
-     #   st.session_state.mvc = []
-    
-    
-    #functie die ervoor zorgt dat het makkelijker is om tussen talen te switchen dan hoef je niet elke keer talen.loc['key', st.session_state.taal] te typen
-    #def t(key):
-     #   return talen.loc[key, st.session_state.taal]
-    
     
     # layout
     
@@ -376,6 +301,8 @@ def main_app():
     
         buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
         if st.session_state.pagina == 'kaart':
+
+            st.title(t('mp tit kaart'))
         
             fig2 = px.choropleth_mapbox(
                 buurten,
