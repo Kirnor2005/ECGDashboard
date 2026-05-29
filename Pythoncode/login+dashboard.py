@@ -45,7 +45,7 @@ div[data-testid="stTextInput"] label {
     justify-content: center;
 }
 
-/* Input tekst centreren */
+/* E-mail input tekst exact centreren */
 div[data-testid="stTextInput"] div[data-baseweb="input"] input {
     text-align: center !important;
     box-sizing: border-box !important;
@@ -53,39 +53,25 @@ div[data-testid="stTextInput"] div[data-baseweb="input"] input {
     padding-right: 3rem !important;
 }
 
+/* Wachtwoordveld: compenseer het oogje rechts zodat tekst op dezelfde midden-as komt als e-mail */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] input {
+    text-align: center !important;
+    padding-left: 5.75rem !important;
+    padding-right: 3rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Oogje zichtbaar houden en vaste breedte geven */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] button {
+    width: 2.75rem !important;
+    min-width: 2.75rem !important;
+}
+
 /* Verberg alleen de tekst "Press Enter to submit form", niet het oogje */
 div[data-testid="InputInstructions"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
-}
-
-/* Wachtwoordveld: maak links een onzichtbare ruimte even groot als het oogje rechts */
-div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] {
-    display: flex !important;
-    align-items: center !important;
-}
-
-/* Onzichtbare linker-balans voor het oogje rechts */
-div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"]::before {
-    content: "";
-    display: block;
-    width: 2.75rem;
-    min-width: 2.75rem;
-    height: 100%;
-}
-
-/* Wachtwoord-input zelf exact centreren tussen linker-balans en oogje */
-div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] input {
-    text-align: center !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-
-/* Oogje rechts vaste breedte geven */
-div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] button {
-    width: 2.75rem !important;
-    min-width: 2.75rem !important;
 }
 
 /* Knoppen centreren */
