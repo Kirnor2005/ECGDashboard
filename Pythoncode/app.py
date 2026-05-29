@@ -135,6 +135,9 @@ if 'taal' not in st.session_state:
 if 'mvc' not in st.session_state:
         st.session_state.mvc = []
 
+if 'fontsize_scale' not in st.session_state:
+    st.session_state.fontsize_scale = 1.0
+
 #functie die ervoor zorgt dat het makkelijker is om tussen talen te switchen dan hoef je niet elke keer talen.loc['key', st.session_state.taal] te typen
 def t(key):
         return talen.loc[key, st.session_state.taal]
