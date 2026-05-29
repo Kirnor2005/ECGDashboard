@@ -41,11 +41,6 @@ div[data-testid="stTextInput"] input {
     padding-right: 3rem !important;
 }
 
-/* Wachtwoord-oogje/verbergknop weghalen */
-div[data-testid="stTextInput"] button {
-    display: none !important;
-}
-
 /* Knoppen centreren */
 div.stButton {
     display: flex;
@@ -115,7 +110,7 @@ mapping = {
     'ex bmi gem 2': 'c bmi2 gem'
 }
 
-CORRECT_EMAIL = "jeemail@gmail.com"
+CORRECT_EMAIL = "jan_pieters@gmail.com"
 CORRECT_PASSWORD = "Hartstikke_gezond123"
 
 if "logged_in" not in st.session_state:
@@ -166,16 +161,16 @@ def centered_image(image_path, width=200):
 def login_screen():
     centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
-    st.title(t('li inloggen'))
+    st.title("Inloggen")
 
     with st.form("login_form"):
-        email = st.text_input(t('li mail'))
-        password = st.text_input(t('li ww'), type="password")
+        email = st.text_input("E-mail")
+        password = st.text_input("Wachtwoord", type="password")
 
         col1, col2, col3 = st.columns([4, 2, 4])
 
         with col2:
-            login_button = st.form_submit_button(t('li inloggen'), width="stretch")
+            login_button = st.form_submit_button("Login", width="stretch")
 
         if login_button:
             if email == CORRECT_EMAIL and password == CORRECT_PASSWORD:
@@ -415,10 +410,7 @@ def main_app():
                 # filter op geselecteerde wijken
                 df_tabel = df[df['Wijk'].isin(st.session_state.wijken_tab)][['Wijk'] + gekozen_kolommen].copy()
     
-                nieuwe_kolomnamen = (
-                    [t('ta wijk')] +
-                    [talen.loc[mvc, st.session_state.taal] for mvc in st.session_state.mvc if mvc in mapping]
-                )
+                nieuwe_kolomnamen = ([t('ta wijk')] + [talen.loc[mvc, st.session_state.taal] for mvc in st.session_state.mvc if mvc in mapping])
     
                 df_tabel.columns = nieuwe_kolomnamen
     
@@ -427,13 +419,13 @@ def main_app():
             else:
                 st.warning(t('ta war 1 v'))
 
-    # Uitloggen helemaal onderaan de dashboard
+    # Uitloggen helemaal onderaan links, onder de dashboard
     st.markdown("<div style='height: 3rem'></div>", unsafe_allow_html=True)
 
-    logout_col1, logout_col2, logout_col3 = st.columns([4, 2, 4])
+    logout_col1, logout_col2 = st.columns([1, 4], vertical_alignment="top")
 
-    with logout_col2:
-        if st.button(t('li lu'), width="stretch"):
+    with logout_col1:
+        if st.button(t('li lu')):
             st.session_state.logged_in = False
             st.rerun()
 
@@ -444,3 +436,5 @@ if st.session_state.logged_in:
     main_app()
 else:
     login_screen()
+
+    
