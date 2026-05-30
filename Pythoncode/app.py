@@ -342,11 +342,10 @@ def main_app():
     with col2:
 
         # pagina 1 = kaart
-    
-        buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-        if st.session_state.pagina == 'kaart':
-
-            st.title(t('mp tit kaart'))
+        st.title(t('mp tit kaart'))
+        
+        try:
+            buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
         
             fig2 = px.choropleth_mapbox(
                 buurten,
@@ -362,6 +361,17 @@ def main_app():
             )
 
             st.plotly_chart(fig2, use_container_width=True)
+
+        
+        except Exception as e:
+            st.warning("Kaart ko niet geladen worden, fallback wordt gebruikt.")
+            st.error(str(e))
+            st.image(amsterdam-map.jpg)
+            
+        
+        if st.session_state.pagina == 'kaart':
+
+            
     
     #_____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
