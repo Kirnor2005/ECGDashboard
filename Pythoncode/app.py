@@ -366,11 +366,9 @@ def main_app():
 
         
             except Exception as e:
+                st.image('Pythoncode/amsterdam-map.jpg')
                 st.warning("Kaart ko niet geladen worden, fallback wordt gebruikt.")
                 st.error(str(e))
-                st.image('Pythoncode/amsterdam-map.jpg')
-
-            
     
     #_____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
