@@ -179,15 +179,10 @@ def centered_image(image_path, width=200):
     with open(image_path, "rb") as img_file:
         encoded = base64.b64encode(img_file.read()).decode()
 
-    st.markdown(
-        f"""
-        <div style="display: flex; justify-content: center;">
-            <img src="data:image/png;base64,{encoded}" width="{width}">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+    # f"""...""" vervangen door f'...' vanwege een syntax-highlighting probleem.
+    # De code werkte wel, maar alles hieronder werd blauw weergegeven.
+    # -rik
+    st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/png;base64,{encoded}" width="{width}"></div>',unsafe_allow_html=True)
 
 #"hartstikke-gezondweek.png"
 
