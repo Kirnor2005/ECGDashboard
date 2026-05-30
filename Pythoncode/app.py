@@ -342,34 +342,33 @@ def main_app():
     with col2:
 
         # pagina 1 = kaart
-        st.title(t('mp tit kaart'))
-        
-        try:
-            buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-        
-            fig2 = px.choropleth_mapbox(
-                buurten,
-                geojson=buurten.__geo_interface__,
-                locations=buurten.index,
-                featureidkey="id", 
-                color=buurten.index,
-                hover_name = 'Gebied',
-                mapbox_style="carto-positron",
-                zoom=10,
-                center={"lat": 52.37, "lon": 4.89},
-                opacity=0.6,
-            )
-
-            st.plotly_chart(fig2, use_container_width=True)
-
-        
-        except Exception as e:
-            st.warning("Kaart ko niet geladen worden, fallback wordt gebruikt.")
-            st.error(str(e))
-            st.image(amsterdam-map.jpg)
-            
-        
         if st.session_state.pagina == 'kaart':
+        
+            st.title(t('mp tit kaart'))
+        
+            try:
+                buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
+        
+                fig2 = px.choropleth_mapbox(
+                    buurten,
+                    geojson=buurten.__geo_interface__,
+                    locations=buurten.index,
+                    featureidkey="id", 
+                    color=buurten.index,
+                    hover_name = 'Gebied',
+                    mapbox_style="carto-positron",
+                    zoom=10,
+                    center={"lat": 52.37, "lon": 4.89},
+                    opacity=0.6,
+                )
+
+                st.plotly_chart(fig2, use_container_width=True)
+
+        
+            except Exception as e:
+                st.warning("Kaart ko niet geladen worden, fallback wordt gebruikt.")
+                st.error(str(e))
+                st.image(amsterdam-map.jpg)
 
             
     
