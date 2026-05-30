@@ -343,7 +343,7 @@ def main_app():
 
         # pagina 1 = kaart
     
-        buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_latlng.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
+        buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
         if st.session_state.pagina == 'kaart':
 
             st.title(t('mp tit kaart'))
