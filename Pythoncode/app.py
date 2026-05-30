@@ -1,8 +1,13 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
 import geopandas as gpd
+import base64
+
+st.set_page_config(layout="wide")
+
 st.markdown("""
 <style>
 /* Afbeelding container zelf centreren */
@@ -24,22 +29,50 @@ h1, h2, h3, p, label {
     text-align: center !important;
 }
 
+/* Login titel exact centreren zonder Streamlit anchor/link-icoontje */
+.login-title-text {
+    width: 100%;
+    text-align: center !important;
+    display: block;
+    margin: 0 auto 1rem auto;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
 /* Input labels centreren */
 div[data-testid="stTextInput"] label {
     display: flex;
     justify-content: center;
 }
 
-/* Input tekst centreren */
-div[data-testid="stTextInput"] input {
+/* E-mail input tekst exact centreren */
+div[data-testid="stTextInput"] div[data-baseweb="input"] input {
     text-align: center !important;
+    box-sizing: border-box !important;
     padding-left: 3rem !important;
     padding-right: 3rem !important;
 }
 
-/* Wachtwoord-oogje/verbergknop weghalen */
-div[data-testid="stTextInput"] button {
+/* Wachtwoordveld: compenseer het oogje rechts zodat tekst op dezelfde midden-as komt als e-mail */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] input {
+    text-align: center !important;
+    padding-left: 5.75rem !important;
+    padding-right: 3rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Oogje zichtbaar houden en vaste breedte geven */
+div[data-testid="stTextInput"]:has(input[type="password"]) div[data-baseweb="input"] button {
+    width: 2.75rem !important;
+    min-width: 2.75rem !important;
+}
+
+/* Verberg alleen de tekst "Press Enter to submit form", niet het oogje */
+div[data-testid="InputInstructions"] {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
 }
 
 /* Knoppen centreren */
@@ -111,7 +144,7 @@ mapping = {
     'ex bmi gem 2': 'c bmi2 gem'
 }
 
-CORRECT_EMAIL = "jeemail@gmail.com"
+CORRECT_EMAIL = "jan_pieters@gmail.com"
 CORRECT_PASSWORD = "Hartstikke_gezond123"
 
 if "logged_in" not in st.session_state:
@@ -143,29 +176,44 @@ def t(key):
         return talen.loc[key, st.session_state.taal]
 
 
+def centered_image(image_path, width=200):
+    with open(image_path, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
+
+    # f"""...""" vervangen door f'...' vanwege een syntax-highlighting probleem.
+    # De code werkte wel, maar alles hieronder werd blauw weergegeven.
+    # -rik
+    st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/png;base64,{encoded}" width="{width}"></div>',unsafe_allow_html=True)
+
 #"hartstikke-gezondweek.png"
 
 def login_screen():
-    st.image('Pythoncode/hartstikke-gezondweek.png', width=200)
+    centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
-    st.title(t('li inloggen'))
+    st.markdown(
+        "<div class='login-title-text'>Inloggen</div>",
+        unsafe_allow_html=True
+    )
 
-    email = st.text_input(t('li mail'))
-    password = st.text_input(t('li ww'), type="password")
+    with st.form("login_form"):
+        email = st.text_input(t('li mail')) # "E-mail" veranderd naar t('li mail')
+        password = st.text_input(t('li ww'), type="password") # "Wachtwoord" veranderd naar t('li ww')
 
-    if st.button(t('li inloggen')):
-        if email == CORRECT_EMAIL and password == CORRECT_PASSWORD:
-            st.session_state.logged_in = True
-            st.success("Succesvol ingelogd!")
-            st.rerun()
-        else:
-            st.error("Onjuiste e-mail of wachtwoord.")
+        col1, col2, col3 = st.columns([4, 2, 4])
+
+        with col2:
+            login_button = st.form_submit_button(t('li inloggen'), width="stretch") # "Login" veranderd naar t('li inloggen')
+
+        if login_button:
+            if email == CORRECT_EMAIL and password == CORRECT_PASSWORD:
+                st.session_state.logged_in = True
+                st.success(t('li suc')) # "Succesvol ingelogd!" veranderd naar t('li suc')
+                st.rerun()
+            else:
+                st.error(t('li fout')) # "Onjuiste e-mail of wachtwoord." veranderd naar t('li fout')
 
 
 def main_app():
-
-    st.set_page_config(layout="wide")
-    
     
     # layout
     
@@ -178,10 +226,6 @@ def main_app():
     with col1:
 
         st.markdown("<div style='height: 1rem'></div>", unsafe_allow_html=True)
-        
-        if st.button(t('li lu')):
-            st.session_state.logged_in = False
-            st.rerun()
 
         st.markdown("<div style='height: 1rem'></div>", unsafe_allow_html=True)
     
@@ -406,6 +450,16 @@ def main_app():
     
             else:
                 st.warning(t('ta war 1 v'))
+
+    # Uitloggen helemaal onderaan links, onder de dashboard
+    st.markdown("<div style='height: 3rem'></div>", unsafe_allow_html=True)
+
+    logout_col1, logout_col2 = st.columns([1, 4], vertical_alignment="top")
+
+    with logout_col1:
+        if st.button(t('li lu')):
+            st.session_state.logged_in = False
+            st.rerun()
 
 
 #app starten
