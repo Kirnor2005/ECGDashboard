@@ -368,7 +368,7 @@ def main_app():
             except Exception as e:
                 st.warning("Kaart ko niet geladen worden, fallback wordt gebruikt.")
                 st.error(str(e))
-                st.image('amsterdam-map.jpg')
+                st.image('Pythoncode/amsterdam-map.jpg')
 
             
     
