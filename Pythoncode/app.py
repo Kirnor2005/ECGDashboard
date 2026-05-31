@@ -163,7 +163,7 @@ if 'variabelen' not in st.session_state:
         st.session_state.variabelen = []
     
 if 'taal' not in st.session_state:
-        st.session_state.taal = 'Deutsch' #mag weer veranderd worden naar English maar is nu ff Deutsch om te demonstereren dat het ook voor het loginscherm werkt.
+        st.session_state.taal = 'English' #mag weer veranderd worden naar English maar is nu ff Deutsch om te demonstereren dat het ook voor het loginscherm werkt.
     
 if 'mvc' not in st.session_state:
         st.session_state.mvc = []
