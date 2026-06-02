@@ -359,7 +359,7 @@ def main_app():
                     mapbox_style="carto-positron",
                     zoom=9.5,
                     center={"lat": 52.37, "lon": 4.89},
-                    opacity=0.4,
+                    opacity=0.45,
                 )
 
                 st.plotly_chart(fig2, use_container_width=True)
