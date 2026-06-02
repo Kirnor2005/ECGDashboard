@@ -358,7 +358,7 @@ def main_app():
                     hover_name = 'Gebied',
                     mapbox_style="carto-positron",
                     zoom=9.5,
-                    center={"lat": 51.37, "lon": 4.69},
+                    center={"lat": 51.35, "lon": 4.89},
                     opacity=0.4,
                 )
 
