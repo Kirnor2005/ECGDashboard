@@ -357,9 +357,9 @@ def main_app():
                     color=buurten.index,
                     hover_name = 'Gebied',
                     mapbox_style="carto-positron",
-                    zoom=10,
+                    zoom=09,
                     center={"lat": 52.37, "lon": 4.89},
-                    opacity=0.6,
+                    opacity=0.5,
                 )
 
                 st.plotly_chart(fig2, use_container_width=True)
