@@ -357,7 +357,7 @@ def main_app():
                     color=buurten.index,
                     hover_name = 'Gebied',
                     mapbox_style="carto-positron",
-                    zoom=09,
+                    zoom=9,
                     center={"lat": 52.37, "lon": 4.89},
                     opacity=0.9,
                 )
