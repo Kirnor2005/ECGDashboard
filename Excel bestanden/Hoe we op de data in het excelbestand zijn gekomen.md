@@ -1,3 +1,5 @@
+# Uitleg gegenereerde data
+
 De toegereikte ECG-data is rechtstreeks gebruikt. 
 Voor de overige variabelen zijn categorieën gegenereerd waarbij de meest voorkomende categorie (MVC) bewust richting een gezonde situatie is gekozen.
 
