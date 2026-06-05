@@ -50,7 +50,7 @@ Het gemiddelde voor BMI is berekend als:
 Voor deze methode is gekozen omdat de werkelijke verdeling van de data onbekend is. Er is daarom aangenomen dat waarden die dichter bij de meest voorkomende categorie liggen waarschijnlijker zijn dan waarden die verder van deze categorie af liggen. Daarnaast is aangenomen dat de populatie overwegend gezond is, waardoor de meest voorkomende categorie in de richting van de gezonde categorieën is geplaatst.
 
 - n was hier bij alles 1 behalve bij Bloeddruk (Bovendruk).
-- $\sigma$ was bij allen 1
+- b was bij allen 1
 - $\lambda$ of de 'bias' was 0.14 om het niet al te veel af te laten wijken van de originele categorie
 
 https://en.wikipedia.org/wiki/Kernel_smoother
