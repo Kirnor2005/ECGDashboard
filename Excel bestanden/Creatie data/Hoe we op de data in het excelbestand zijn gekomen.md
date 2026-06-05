@@ -12,7 +12,7 @@ De originele formule voor Gaussian kernel smoother is:
 ```math
 K(x^*,x_i) = \exp(- \frac{(x^* - x_i)^2}{2b^2})
 ```
-waar $x^*$ het evaluatiepunt is en b de lengteschaal is.
+waar $x^*$ het evaluatiepunt is en b (sigma in excel) de lengteschaal is.
 
 De gebruikte gewichten zijn berekend met:
 ```math
