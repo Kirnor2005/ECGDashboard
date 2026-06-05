@@ -7,7 +7,7 @@ Vervolgens is aan iedere categorie een oplopende numerieke waarde toegekend.
 Om een gemiddelde waarde te schatten, is gebruikgemaakt van een gewogen gemiddelde waarbij de gewichten zijn bepaald met een Gaussische functie rond de modus (de meest voorkomende categorie). 
 Hierbij krijgen categorieën die dichter bij de modus liggen een hoger gewicht dan categorieën die verder van de modus af liggen.
 
-De originele formule voor Kernel smoother is:
+De originele formule voor Gaussian kernel smoother is:
 
 ```math
 K(x^*,x_i) = \exp(- \frac{(x^* - x_i)^2}{2b^2})
