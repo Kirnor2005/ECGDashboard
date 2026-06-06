@@ -297,20 +297,23 @@ def login_screen():
         #             Het is namelijk wel minder dan eerst (niet veel tho) 
     with col_right:
         with st.popover('⚙'):
-            st.selectbox(
-                t('mp taal'),
-                options=talen_opties,
-                key='taal'
-            )
-            st.slider(
-                label=t('mp lett'),
-                min_value=0.2,
-                max_value=3.5,
-                value=st.session_state.fontsize_scale,
-                step=0.1,
-                key='fontsize_scale'
-            )
+            st.selectbox(t('mp taal'), options=talen_opties, key='taal')
+            st.slider(label=t('mp lett'), min_value=0.2, max_value=3.5, value=st.session_state.fontsize_scale, step=0.1, key='fontsize_scale')
 
+    scale = st.session_state.fontsize_scale
+
+    st.markdown(
+        f"""
+        <style>
+        html, body, [class*="css"] {{
+            font-size: {16 * scale}px;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    
     st.markdown(
         f"<div class='login-title-text'>{t('li inloggen')}</div>",
         unsafe_allow_html=True
