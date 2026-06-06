@@ -302,7 +302,7 @@ def login_screen():
                 st.slider(label=t('mp lett'), min_value=0.2, max_value=3.5, value=st.session_state.fontsize_scale, step=0.1, key='fontsize_scale')
 
     st.markdown(
-        "<div class='login-title-text'>Inloggen</div>",
+        "<div class='login-title-text'>{t('li inloggen')}</div>",
         unsafe_allow_html=True
     )
 
