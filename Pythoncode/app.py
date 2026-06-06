@@ -262,7 +262,6 @@ def centered_image(image_path, width=200):
 #"hartstikke-gezondweek.png"
 
 def login_screen():
-    centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
     # beweegt mee met resize van tab
     st.markdown(""" 
@@ -273,17 +272,9 @@ def login_screen():
         line-height: 1; 
     }
 
-    /*verwijder de pijl (expand_less) */
+    /*verwijder de pijl*/
     [data-testid="stPopover"] [data-testid="stIconMaterial"] {
         display: none !important;
-    }
-
-    /*hoogte van de popover in relatie met de rest*/
-    [data-testid="stPopover"] {
-        position: fixed;
-        left: 30rem;
-        top: 10rem;
-        z-index: 9999;
     }
 
     /*zorgt ervoor dat er geen border is*/
@@ -295,11 +286,30 @@ def login_screen():
     }
     </style> 
     """, unsafe_allow_html=True)
-            
-    with st.popover('⚙'):
-                selectionbox = st.selectbox(t('mp taal'),options=talen_opties,key='taal')
-                index=talen_opties.index(st.session_state.taal)
-                st.slider(label=t('mp lett'), min_value=0.2, max_value=3.5, value=st.session_state.fontsize_scale, step=0.1, key='fontsize_scale')
+
+    col_left, col_image, col_right = st.columns([1, 58, 1])
+    
+     with col_image:
+        #centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
+        centered_image("hartstikke-gezondweek.png", width=200)
+        st.write("")
+        st.write("") #zorgt ervoor dat er ruimte tussen het plaatje en de markdown + form is, ik hoop dat dit oke is. 
+        #             Het is namelijk wel minder dan eerst (niet veel tho) 
+    with col_right:
+        with st.popover('⚙'):
+            st.selectbox(
+                t('mp taal'),
+                options=talen_opties,
+                key='taal'
+            )
+            st.slider(
+                label=t('mp lett'),
+                min_value=0.2,
+                max_value=3.5,
+                value=st.session_state.fontsize_scale,
+                step=0.1,
+                key='fontsize_scale'
+            )
 
     st.markdown(
         f"<div class='login-title-text'>{t('li inloggen')}</div>",
@@ -429,14 +439,12 @@ def main_app():
             header = st.container()
 
             with header:
-                hcol1, hcol2 = st.columns([6, 1])
+                hcol1, hcol2 = st.columns([59, 1])
                 with hcol1:
                     st.markdown(
                     f"<h1 style='margin:0'>{t('mp tit kaart')}</h1>",
                     unsafe_allow_html=True
                     )
-                    
-                    #st.title(t('mp tit kaart'))
 
                 with hcol2:
                     st.markdown(""" 
