@@ -262,8 +262,7 @@ def centered_image(image_path, width=200):
 #"hartstikke-gezondweek.png"
 
 def login_screen():
-    #centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
-    centered_image("hartstikke-gezondweek.png", width=200)
+    centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
 
     # beweegt mee met resize van tab
     st.markdown(""" 
