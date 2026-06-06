@@ -290,8 +290,8 @@ def login_screen():
     col_left, col_image, col_right = st.columns([1, 58, 1])
     
     with col_image:
-        #centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
-        centered_image("hartstikke-gezondweek.png", width=200)
+        centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
+        #centered_image("hartstikke-gezondweek.png", width=200)
         st.write("")
         st.write("") #zorgt ervoor dat er ruimte tussen het plaatje en de markdown + form is, ik hoop dat dit oke is. 
         #             Het is namelijk wel minder dan eerst (niet veel tho) 
