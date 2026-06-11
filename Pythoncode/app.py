@@ -162,7 +162,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "verwerkte_data_alles.csv", sep=';')
+    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "verwerkte_data_alles.csv")
 
 @st.cache_data
 def load_talen():
