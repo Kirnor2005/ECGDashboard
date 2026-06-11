@@ -166,7 +166,7 @@ def load_data():
 
 @st.cache_data
 def load_talen():
-    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "taal.csv", sep=';')
+    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "taal.csv")
 
 @st.cache_data
 def load_data_all():
