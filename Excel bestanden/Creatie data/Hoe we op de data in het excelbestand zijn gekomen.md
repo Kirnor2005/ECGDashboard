@@ -119,6 +119,9 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 \end{align}
 ```
 ## Analyse gegenereerde data
+
+![image](Excel%20bestanden/Creatie%20data/bloeddruk_verdeling.png)
+
 ## Discussie
 ## Conclusie
 ## Bronnen en inspiratie
