@@ -170,7 +170,7 @@ def load_talen():
 
 @st.cache_data
 def load_data_all():
-    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "verwerkte_data_geslacht_leeftijd_final.csv", sep=';')
+    return pd.read_csv(BASE_DIR.parent / "Excel bestanden" / "verwerkte_data_geslacht_leeftijd_final.csv")
 
 
 df = load_data()
