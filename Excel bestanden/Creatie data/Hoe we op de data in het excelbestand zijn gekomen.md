@@ -126,12 +126,27 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 <tr>
 <td style="width:55%">
   <img src="bloeddruk_verdeling.png" style="width:100%">
+  <img src="cholesterol_verdeling.png" style="width:100%">
+  <img src="nonhdl_verdeling.png" style="width:100%">
+  <img src="bloedsuiker_verdeling.png" style="width:100%">
+  <img src="bmi_verdeling.png" style="width:100%">
 </td>
 <td style="width:45%">
   .........................................................................................................................................
+  
 </td>
 </tr>
 </table>
+
+| $\alpha$ = 0.05 | $Chi^2$               | significant verschil? |
+|-----------------|-----------------------|-----------------------|
+| bloeddruk       | 0.0027204866066264798 | ja                    |
+| cholesterol     | 0.09262607297707628   | nee                   |
+| non-HDL         | 0.813888568154474     | nee                   |
+| bloeddruk       | 0.06516056313925146   | nee                   |
+| bmi             | 0.3953830842463425    | nee                   |
+
+tabel 2. $Chi^2$ toets
 
 ## Discussie
 ## Conclusie
