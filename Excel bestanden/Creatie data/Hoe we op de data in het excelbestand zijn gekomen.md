@@ -120,7 +120,24 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 ```
 ## Analyse gegenereerde data
 
-|  |  |
+| categorie | bloeddruk | cholesterol | non-HDL | bloedsuiker | bmi |
+|-----------|-----------|-------------|---------|-------------|-----|
+| 1         | 22        | 38          | 41      | 52          | 0   |
+| 2         | 31        | 26          | 25      | 11          | 30  |
+| 3         | 15        | 3           |         | 4           | 23  |
+| 4         | 0         | 1           |         |             | 8   |
+
+tabel 2. hoeveelheid per categorie van gemeten waarden HARTstikke gezondweek
+
+| categorie | bloeddruk | cholesterol | non-HDL | bloedsuiker | bmi |
+|-----------|-----------|-------------|---------|-------------|-----|
+| 1         | 32        | 30          | 33      | 29          | 2   |
+| 2         | 11        | 11          | 17      | 17          | 26  |
+| 3         | 7         | 6           |         | 4           | 15  |
+| 4         | 0         | 3           |         |             | 7   | 
+
+tabel 3. hoeveelheid per categorie van gegenereerde waarden.
+
 
 <table>
 <tr>
@@ -146,7 +163,7 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 | bloeddruk       | 0.06516056313925146   | nee                   |
 | bmi             | 0.3953830842463425    | nee                   |
 
-tabel 2. $Chi^2$ toets
+tabel 4. $Chi^2$ toets
 
 ## Discussie
 ## Conclusie
