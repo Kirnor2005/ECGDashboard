@@ -4,7 +4,7 @@ De toegereikte ECG-data is rechtsstreeks gebruikt.
 Voor de overige categorieën zijn er eerst 'meest voorkomende categorieën' met een normaalverdingsvorm gegenereerd, waar ongezonde categorieën oplopend minder kans hebben om gegenereerd te worden (Dit bestand is jammer genoeg niet opgeslagen, zie onderkant kopje voor meer uitleg). Vervolgens zijn de categorieën omgezet naar oplopende numerieke categorie-indexen ($x_i$). En is er vervolgens een gewogen categoriegemiddelde berekend, waarbij categorieën dicht bij de modus meer gewicht krijgen dan categorieën verder van de modus.
 
 Er is gebruikgemaakt van een gewogen 'gemiddelde' waarbij de gewichten zijn bepaald met een Gaussische functie rond de modus (meest voorkomende categorie).
-Hierbij krijgen categorieën die dichter bij de modus liggen een hoger gewicht dan categorieën die verder van de modus afliggen.
+Hierbij krijgen categorieën die dichter bij de modus liggen een hoger gewicht dan categorieën die verder van de modus afliggen. Voor deze methode is gekozen omdat de werkelijke verdeling van de data onbekend is. Er is daarom aangenomen dat waarden die dichter bij de meest voorkomende categorie liggen waarschijnlijker zijn dan waarden die verder van deze categorie af liggen. Daarnaast is aangenomen dat de populatie overwegend gezond is, waardoor de meest voorkomende categorie in de richting van de gezonde categorieën is geplaatst.
 
 | Non-HDL | Bloedsuiker  | Bloeddruk | Cholesterol | BMI |
 | ------- | ------------ | --------- | ----------- | --- |
@@ -56,8 +56,6 @@ Het gemiddelde voor BMI is berekend als:
 {\sum x_i \cdot \exp\!\left(-\frac{(x_i-\text{modus})^2}{2b^2}-\lambda |x_i-n|\right)}
 {\sum \exp\!\left(-\frac{(x_i-\text{modus})^2}{2b^2}-\lambda |x_i-n|\right)}
 ```
-
-Voor deze methode is gekozen omdat de werkelijke verdeling van de data onbekend is. Er is daarom aangenomen dat waarden die dichter bij de meest voorkomende categorie liggen waarschijnlijker zijn dan waarden die verder van deze categorie af liggen. Daarnaast is aangenomen dat de populatie overwegend gezond is, waardoor de meest voorkomende categorie in de richting van de gezonde categorieën is geplaatst.
 
 - n was hier bij alles 1 behalve bij Bloeddruk (Bovendruk).
 - b was bij allen 1
