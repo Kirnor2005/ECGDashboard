@@ -63,6 +63,14 @@ Het gemiddelde voor BMI is berekend als:
 \
 ## Vertaling naar excel
 
+<h3>generatie van modi</h3>
+Een voorbeeld van hoe de modi berekend zijn, in dit geval hoe de waarde van bloeddruk gegenereerd zou zijn:
+
+=LET( r; RAND()*100; IFS( r<=63;"<120"; r<=83;"120-140"; r<=98;"140-180"; TRUE;">180"))
+
+waar <120 63%, 120-140 20%, 140-180 15%, en >180 2% kans heeft om te genereren. Dit zijn bedachte hoeveelheden en zal dus niet (100%) met de realiteit overeenkomen.
+
+<h3>berekening gewogen gemiddelde</h3>
 Voor de functie die de maximale waarde benut is de volgende formule in excel gebruikt:
 
 =SUM(\
@@ -110,5 +118,10 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 \frac{1(0.1353352832)+2(0.527292424)+3(0.7557837415)+4(0.3985190411)}{0.1353352832 + 0.527292424 + 0.7557837415 + 0.3985190411} \; = \; \frac{5.05134752}{1.81693049} \; = \; 2.780154523 \; ≈ \; 2.78
 \end{align}
 ```
+## Analyse gegenereerde data
+## Discussie
+## Conclusie
 ## Bronnen en inspiratie
-[Wiki](https://en.wikipedia.org/wiki/Kernel_smoother)
+[Wikipedia - Kernel Smoother](https://en.wikipedia.org/wiki/Kernel_smoother)\
+[Matplotlib - Barchart](https://matplotlib.org/stable/gallery/lines_bars_and_markers/barchart.html)\
+[Scipy - Chi-kwadraat](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html )
