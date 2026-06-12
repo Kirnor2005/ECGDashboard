@@ -6,12 +6,12 @@ Voor de overige categorieën zijn er eerst 'meest voorkomende categorieën' met 
 Er is gebruikgemaakt van een gewogen 'gemiddelde' waarbij de gewichten zijn bepaald met een Gaussische functie rond de modus (meest voorkomende categorie).
 Hierbij krijgen categorieën die dichter bij de modus liggen een hoger gewicht dan categorieën die verder van de modus afliggen. Voor deze methode is gekozen omdat de werkelijke verdeling van de data onbekend is. Er is daarom aangenomen dat waarden die dichter bij de meest voorkomende categorie liggen waarschijnlijker zijn dan waarden die verder van deze categorie af liggen. Daarnaast is aangenomen dat de populatie overwegend gezond is, waardoor de meest voorkomende categorie in de richting van de gezonde categorieën is geplaatst.
 
-| Non-HDL | Bloedsuiker  | Bloeddruk | Cholesterol | BMI |
-| ------- | ------------ | --------- | ----------- | --- |
-| ***< 3.8*** | ***< 7.8*** | ***< 120***     | ***< 5***         | < 18.5 |
-| > 3.8   | 7.8 - 11     | ***120 - 140*** | 5 - 6.5     | ***18.5 - 25*** |
-|         | > 11.1       | 140 - 180 | 6.5 - 8     | 25 - 30 |
-|         |              | > 180     | > 8         | > 30 |
+| Non-HDL     | Bloedsuiker  | Bloeddruk       | Cholesterol | BMI             |
+| ----------- | ------------ | --------------- | ----------- | --------------- |
+| ***< 3.8*** | ***< 7.8***  | ***< 120***     | ***< 5***   | < 18.5          |
+| > 3.8       | 7.8 - 11     | ***120 - 140*** | 5 - 6.5     | ***18.5 - 25*** |
+|             | > 11.1       | 140 - 180       | 6.5 - 8     | 25 - 30         |
+|             |              | > 180           | > 8         | > 30            |
 
 tabel 1. gezonde categorie per meetwaarde (***gezond***)
 
@@ -120,7 +120,7 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
 ```
 ## Analyse gegenereerde data
 
-![image](Excel%20bestanden/Creatie%20data/bloeddruk_verdeling.png)
+|  |  |
 
 <table>
 <tr>
@@ -128,8 +128,8 @@ e^{-\frac{(4-3)^2}{2\cdot1^2} - 0.14\cdot\max(0, 1-1)} \; = \; e^{-\frac{1}{2} -
   <img src="bloeddruk_verdeling.png" style="width:100%">
   <img src="cholesterol_verdeling.png" style="width:100%">
   <img src="nonhdl_verdeling.png" style="width:100%">
-  <img src="bloedsuiker_verdeling.png" style="width:100%">
-  <img src="bmi_verdeling.png" style="width:100%">
+  <img src="bloedsuiker_verdeling_final.png" style="width:100%">
+  <img src="bmi_verdeling_final.png" style="width:100%">
 </td>
 <td style="width:45%">
   .........................................................................................................................................
