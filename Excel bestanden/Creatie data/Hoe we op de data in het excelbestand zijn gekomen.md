@@ -33,11 +33,11 @@ De gebruikte gewichten zijn berekend met:
 w_i = \exp( -\frac{(x_i-modus)^2}{2b^2})
 ```
 
-Daarnaast wordt een asymmetrische correctie toegepast voor waarden boven een referentiewaarde n:
+De correctie voor alles behalve BMI wordt op de volgende manier berekend:
 ```math
 \exp(- \lambda \max\{0, x_i-n\})
 ```
-Voor BMI wordt in plaats daarvan een afstandscorrectie gebruikt:
+En voor BMI:
 ```math
 \exp(-\lambda |x_i-n|)
 ```
