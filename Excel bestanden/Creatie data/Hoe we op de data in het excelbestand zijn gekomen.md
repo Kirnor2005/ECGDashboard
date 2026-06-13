@@ -37,7 +37,7 @@ Daarnaast wordt een asymmetrische correctie toegepast voor waarden boven een ref
 ```math
 \exp(- \lambda \max\{0, x_i-n\})
 ```
-Voor BMI wordt in plaats daarvan een symmetrische afstandscorrectie gebruikt:
+Voor BMI wordt in plaats daarvan een afstandscorrectie gebruikt:
 ```math
 \exp(-\lambda |x_i-n|)
 ```
