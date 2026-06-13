@@ -1,40 +1,40 @@
-## ECG Dashboard for researchers HARTstikkegezond
+## ECG-dashboard voor onderzoekers van HARTstikkeGezond
 
-This dashboard will be used to get a better understanding of health data throughout Amsterdam and eventually other cities aswell. HARTstikkegezond is a initiative by the Amsterdam University of Applied Sciences to lessen the difference in healthy life years in collarboration with parties such as the dutch heart foundation, Amsterdam UMC and many others. They do this by hosting healthcheckups where residents can check their health and get lifestyle advice (for free).
+Dit dashboard wordt gebruikt om een beter inzicht te krijgen in gezondheidsgegevens binnen Amsterdam en uiteindelijk ook in andere steden. HARTstikkeGezond is een initiatief van de Hogeschool van Amsterdam dat als doel heeft de verschillen in gezonde levensjaren te verkleinen, in samenwerking met partijen zoals de Hartstichting, Amsterdam UMC en vele anderen. Dit doen zij door gezondheidschecks te organiseren waarbij bewoners gratis hun gezondheid kunnen laten controleren en leefstijladvies kunnen ontvangen.
 
+### Het dashboard toont de volgende gegevens
+- verschillende manieren om HRV (hartslagvariabiliteit) te berekenen;
+- gemiddelde hartslag;
+- laagst gemeten hartslag;
+- hoogst gemeten hartslag;
+- standaarddeviatie van de hartslag;
+- verschil in hartslag tussen de eerste en tweede gemiddelde hartslag;
+- de meest voorkomende categorie van de volgende gezondheidswaarden: cholesterol, bloedsuiker, systolische bloeddruk, body mass index (BMI) en non-HDL-cholesterol;
+- en het berekende gemiddelde van elk van deze waarden, met uitzondering van non-HDL-cholesterol.
 
-### The dashboard will display the following things
-- different ways of calculating HRV;
-- Average heart rate;
-- Lowerst measured heart rate;
-- Highest measured heart rate;
-- Standard diviation of heart rate;
-- Difference in HR between first and second avarage heart rate;
-- most measured categorie of the following things: cholesterol, blood sugar, systolic blood pressure, body mass index and Non-HDL;
-- and the calculated possible average of each exept for Non-HDL.
+Het is mogelijk om deze gegevens te filteren op leeftijdsgroep, geslacht en wijk.
 
-It is possible to filtere this data by agegroup, gender and neighbourhood.
+### Aan de slag
+Om het dashboard te gebruiken, ga je naar de onderstaande link en log je in met het juiste e-mailadres en wachtwoord.
 
+https://ecgdashboard-hartstikkegezond.streamlit.app/
 
-### Getting started
-To start the dashboard you will need to visit the following link and type in the correct e-mail and password.
+Het kan voorkomen dat de webapp offline is. In dat geval hoef je alleen op de knop 'Yes, get this app back up!' te klikken en start de applicatie automatisch opnieuw op.
 
-https://ecgdashboard-hartstikkegezond.streamlit.app/ 
+Een tweede manier om het dashboard te bekijken is door alle benodigde bestanden te downloaden, de paden van de afbeeldingen en CSV-bestanden aan te passen en de applicatie lokaal uit te voeren via je (Anaconda) PowerShell-prompt. Navigeer naar de gewenste map en voer het volgende commando uit:
 
-It is a possibility that the webapp is offline, all you need to do is to click on the button 'Yes, get this app back up!' and the app will start itself.
+```bash
+streamlit run bestandsnaam.py
+```
 
-A second way of inspecting the dashboard is by downloading all the needed files, changing the paths of the images and csv's and running it locally in your (anaconda) powershellprompt by going to the disired folder and typing streamlit run yourfilename.py .
+Als je de lettergrootte of taal wilt wijzigen, kun je dit doen via de instellingen rechtsboven in het scherm.
 
-If you want to change the font-size or language you can do so on the top-right corner.
+### Hulp (nog in ontwikkeling)
 
-### Help (still in progress)
-
-
-### Authors:
-Alicia Pezzi
-Nina Raju
-Rik Noorman
+### Auteurs
+Alicia Pezzi  
+Nina Raju  
+Rik Noorman  
 Soufiane El Omari
 
-
-### Acknowledgements (in progress)
+### Dankwoord (nog in ontwikkeling)
