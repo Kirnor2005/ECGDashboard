@@ -235,7 +235,7 @@ talen_opties = [
     'Русский',
     '中文',
     '日本語',
-    '한국인',
+    '한국어',
     'हिंदी',
     'বাংলা', #bengali
     'Bahasa Indonesia'
