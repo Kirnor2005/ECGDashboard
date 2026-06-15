@@ -517,6 +517,10 @@ def main_app():
                      "mvc Non-HDL 2",
                     ]
                 )
+                st.write("Kolommen buurten:", buurten.columns.tolist())
+                st.write("Kolommen dataverwerkt:", dataverwerkt.columns.tolist())
+                st.write(dataverwerkt.head())
+                st.write(buurten.head())
                 buurten = buurten.merge(dataverwerkt, left_on="Gebied", right_on="Wijk", how="left")
                 fig2 = px.choropleth_mapbox(
                     buurten,
