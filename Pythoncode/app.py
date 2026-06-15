@@ -241,10 +241,6 @@ talen_opties = [
     'Bahasa Indonesia'
 ]
 
-#CORRECT_EMAIL = "jan_pieters@gmail.com"
-#CORRECT_PASSWORD = "Hartstikke_gezond123"
-
-# in \streamlit.\secrets.toml staan de inlog gegevens.
 CORRECT_EMAIL = st.secrets["inloggen"]["email"]
 CORRECT_PASSWORD = st.secrets["inloggen"]["password"]
 
