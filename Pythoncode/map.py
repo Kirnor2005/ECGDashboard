@@ -500,17 +500,17 @@ def main_app():
 
         
             try:
-                #dataverwerkt = pd.read_csv("verwerkte_data.csv", sep=";")
-               # buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk")
+                
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-        
+                dataverwerkt = pd.read_csv("verwerkte_data.csv", sep=";")
+                buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk")
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
                     locations=buurten.index,
                     featureidkey="id", 
                     color=buurten.index,
-                    hover_name = 'Gebied',
+                    hover_name = 'Wijk',
                     mapbox_style="carto-positron",
                     zoom=9.5,
                     center={"lat": 52.37, "lon": 4.89},
