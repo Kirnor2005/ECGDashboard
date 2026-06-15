@@ -524,7 +524,7 @@ def main_app():
                     locations=buurten.index,
                     featureidkey="id", 
                     color=keuze,
-                    hover_name = 'Wijk',
+                    hover_name ='Wijk',
                     mapbox_style="carto-positron",
                     zoom=9.5,
                     center={"lat": 52.37, "lon": 4.89},
