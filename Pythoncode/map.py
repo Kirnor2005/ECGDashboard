@@ -517,7 +517,7 @@ def main_app():
                      "mvc Non-HDL 2",
                     ]
                 )
-                buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk", how="Left")
+                buurten = buurten.merge(dataverwerkt, left_on="Gebied", right_on="Wijk", how="left")
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
