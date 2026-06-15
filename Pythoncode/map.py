@@ -503,6 +503,9 @@ def main_app():
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
                 dataverwerkt = pd.read_csv("Excel bestanden/verwerkte_data_alles.csv", sep=";")
+                buurten["kaart_id"] = buurten.index.astype(str)
+                dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
+                buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
                 keuze = st.selectbox(
                     "Kies welke index je op de kaart wilt zien",
                     ["mvc BMI 1",
@@ -522,7 +525,7 @@ def main_app():
                     buurten,
                     geojson=buurten.__geo_interface__,
                     locations=buurten.index,
-                    featureidkey="id", 
+                    featureidkey=["kaart_id"], 
                     color=keuze,
                     hover_name ='Wijk',
                     mapbox_style="carto-positron",
