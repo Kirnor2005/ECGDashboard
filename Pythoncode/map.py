@@ -502,7 +502,7 @@ def main_app():
             try:
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-                dataverwerkt = pd.read_csv("verwerkte_data.csv", sep=";")
+                dataverwerkt = pd.read_csv("verwerkte_data_alles.csv", sep=";")
                 keuze = st.selectbox(
                     "Kies welke index je op de kaart wilt zien",
                     ["mvc BMI 1",
