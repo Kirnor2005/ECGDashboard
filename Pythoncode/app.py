@@ -241,8 +241,12 @@ talen_opties = [
     'Bahasa Indonesia'
 ]
 
-CORRECT_EMAIL = "jan_pieters@gmail.com"
-CORRECT_PASSWORD = "Hartstikke_gezond123"
+#CORRECT_EMAIL = "jan_pieters@gmail.com"
+#CORRECT_PASSWORD = "Hartstikke_gezond123"
+
+# in \streamlit.\secrets.toml staan de inlog gegevens.
+CORRECT_EMAIL = st.secrets["inloggen"]["email"]
+CORRECT_PASSWORD = st.secrets["inloggen"]["password"]
 
 #functie die ervoor zorgt dat het makkelijker is om tussen talen te switchen dan hoef je niet elke keer talen.loc['key', st.session_state.taal] te typen
 def t(key):
