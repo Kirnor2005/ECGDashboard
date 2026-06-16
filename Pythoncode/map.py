@@ -503,10 +503,7 @@ def main_app():
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
                 
-                if st.session_state.variabelen:
-                    index = st.session_state.variabelen[0]
-                else:
-                    index = "mvc BMI 1"  
+             
                 
                 buurten["kaart_id"] = buurten.index.astype(str)
                 buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
@@ -518,6 +515,11 @@ def main_app():
                     right_on="Wijk",
                     how="left"
                 )
+                if st.session_state.variabelen:
+                    index = st.session_state.variabelen[0]
+                    else:
+                        index = "mvc BMI 1"  
+                        
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
