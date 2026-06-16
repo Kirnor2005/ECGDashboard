@@ -515,11 +515,19 @@ def main_app():
                     right_on="Wijk",
                     how="left"
                 )
-                if len(st.session_state.variabelen) != 0:
-                    index = st.session_state.variabelen
+                #if len(st.session_state.variabelen) != 0:
+                #    index = st.session_state.variabelen
+                #else:
+                #    index = "mvc BMI 1"  
+
+                if st.session_state.variabelen:
+                    index = mapping.get(
+                        st.session_state.variabelen,
+                        "mvc BMI 1"  # fallback als sleutel niet bestaat
+                    )
                 else:
-                    index = "mvc BMI 1"  
-                        
+                    index = "mvc BMI 1"
+                    
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     #geojson=buurten.__geo_interface__,
