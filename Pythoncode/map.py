@@ -511,7 +511,7 @@ def main_app():
                     index = "mvc BMI 1"  # standaardwaarde
                 buurten["kaart_id"] = buurten.index.astype(str)
                 buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
-                dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
+                dt["Wijk"] = dt["Wijk"].astype(str).str.strip()
                 
                 buurten = buurten.merge(
                     dt,
