@@ -562,6 +562,8 @@ def main_app():
 
                         st.plotly_chart(fig2, use_container_width=True)
 
+                        st.rerun()
+
                 else:
                     index = "mvc BMI 1"
                     
@@ -585,6 +587,8 @@ def main_app():
                     )
 
                     st.plotly_chart(fig2, use_container_width=True)
+
+                    st.rerun()
 
         
             except Exception as e:
