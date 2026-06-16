@@ -588,8 +588,6 @@ def main_app():
 
                     st.plotly_chart(fig2, use_container_width=True)
 
-                    st.rerun()
-
         
             except Exception as e:
                 st.image('Pythoncode/amsterdam-map.jpg')
