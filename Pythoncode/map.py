@@ -538,6 +538,7 @@ def main_app():
                             zoom=9.5,
                             center={"lat": 52.37, "lon": 4.89},
                             opacity=0.45,
+                            color_continuous_scale="Viridis"
                         )
           
                         fig2.update_layout(
@@ -562,7 +563,7 @@ def main_app():
                         zoom=9.5,
                         center={"lat": 52.37, "lon": 4.89},
                         opacity=0.45,
-                        color_continuous_scale="Viridis",
+                        color_continuous_scale="Viridis"
                     )
           
                     fig2.update_layout(
