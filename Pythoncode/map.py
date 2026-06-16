@@ -549,20 +549,6 @@ def main_app():
               #  st.error(str(e))
     
     try:
-    
-        buurten = gpd.read_file(
-            "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling"
-        )
-
-    # Kies variabele voor kaart
-        geselecteerde_variabelen_kaart = st.multiselect(
-            t("mp kies v"),
-            options=var_keys,
-            default=st.session_state.variabelen,
-            format_func=lambda x: talen.loc[x, st.session_state.taal],
-            placeholder=t("menu co"),
-            key="variabelen_selectie_kaart"
-    try:
     buurten = gpd.read_file(
         "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling"
     )
