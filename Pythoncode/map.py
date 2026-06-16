@@ -567,37 +567,38 @@ elif st.session_state.pagina == 'grafiek':
             ]
     
             # grafieken
-    if len(st.session_state.variabelen) > 0: 
+    if len(st.session_state.variabelen) > 0:
+        
     
-                grafiek_cols = st.columns(len(st.session_state.variabelen)) # zorgt ervoor dat er zoveel grafieken naast elkaar komen als er gekozen zijn dus als 
+        grafiek_cols = st.columns(len(st.session_state.variabelen)) # zorgt ervoor dat er zoveel grafieken naast elkaar komen als er gekozen zijn dus als 
                                                                             # er 4 variabelen zijn gekozen heb je 4 kolommen (4 grafieken naast elkaar
     
-                for i, variabele_key in enumerate(st.session_state.variabelen): # enumerate geeft zowel de index als het element terug
+        for i, variabele_key in enumerate(st.session_state.variabelen): # enumerate geeft zowel de index als het element terug
                                                                                 # dus: for index, element in st.session_state.variabelen
                     
                     # vertaling naar dataframe kolomnaam
-                    variabele = mapping[variabele_key]
+            variabele = mapping[variabele_key]
     
-                    fig = px.bar(
-                        filtered_df_graf,
-                        x='Wijk',
-                        y=variabele,
-                        color='Wijk',
-                        title=f"{talen.loc[variabele_key, st.session_state.taal]} {t('gr per wijk')}",
+            fig = px.bar(
+                filtered_df_graf,
+                x='Wijk',
+                y=variabele,
+                color='Wijk',
+                title=f"{talen.loc[variabele_key, st.session_state.taal]} {t('gr per wijk')}",
     
-                        labels={variabele: talen.loc[variabele_key, st.session_state.taal]}
-                    )
+                labels={variabele: talen.loc[variabele_key, st.session_state.taal]}
+            )
     
-                    fig.update_layout(xaxis_title=t('ta wijk'), yaxis_title=talen.loc[variabele_key, st.session_state.taal], legend_title=t('ta wijk'))
+            fig.update_layout(xaxis_title=t('ta wijk'), yaxis_title=talen.loc[variabele_key, st.session_state.taal], legend_title=t('ta wijk'))
     
-                    grafiek_cols[i].plotly_chart(
-                        fig,
-                        use_container_width=True
-                    )
+            grafiek_cols[i].plotly_chart(
+                fig,
+                use_container_width=True
+            )
     
-            else:
+     else:
     
-                st.warning(t('gr war 1 v'))
+        st.warning(t('gr war 1 v'))
                 
     
     #_____________________________________________________________________________________
