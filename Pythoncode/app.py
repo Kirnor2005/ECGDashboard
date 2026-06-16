@@ -502,14 +502,6 @@ def main_app():
 
             with st.expander(t('mp filter'), expanded=False): # beide de grafiek en tabel kunnen in een st.container (?)
 
-                geselecteerde_wijken_grafiek = st.multiselect(
-                    t('mp wijk g'),
-                    options=df['Wijk'].unique(),
-                    default=st.session_state.wijken_graf,
-                    placeholder=t('menu co')
-                )
-
-
                 var_keys = pd.concat([talen.loc["ex sdnn_1":"ex HR Diff"],talen.loc["ex bd gem 1":"ex bmi gem 2"]]).index.tolist()
 
                 geselecteerde_variabelen = st.multiselect(t('mp kies v'), #return = keys van geselecteerde waarden, dus niet de waarden die de gebruiker ziet.
@@ -520,61 +512,11 @@ def main_app():
                                                      )
 
 
-
-
-                # knop
-                if st.button(t('mp toon g')):
-
-                    st.session_state.wijken_graf = geselecteerde_wijken_grafiek
-                    st.session_state.variabelen = geselecteerde_variabelen
-
-                    st.session_state.pagina = 'grafiek'
-
-                    st.rerun()
-
-                geselecteerde_wijken_tabel = st.multiselect(
-                    t('mp wijk t'),
-                    options=df['Wijk'].unique(),
-                    default=st.session_state.wijken_tab,
-                    placeholder=t('menu co')
-                )
-
-
                 # zorgt ervoor dat de keys die nu indexes zijn in een lijst worden gezet
                 mvc_keys = talen.loc["ex mvc bd1":"ex mvc bmi2"].index.tolist()
 
-
-                meest_voorkomende_categorieën = st.multiselect(t('mp mvc'), # return = keys van geselecteerde waarden, dus niet de waarden die de gebruiker ziet.
-                                                               options=mvc_keys, #lijst met opties
-                                                               default=st.session_state.mvc, #als er niks gekozen is, is het leeg
-                                                               format_func=lambda x: talen.loc[x, st.session_state.taal], #
-                                                               placeholder=t('menu co')
-                                                              )
-
-                # knop
-                if st.button(t('mp toon t')):
-
-                    st.session_state.wijken_tab = geselecteerde_wijken_tabel
-                    st.session_state.mvc = meest_voorkomende_categorieën
-
-                    st.session_state.pagina = 'tabel'
-
-                    st.rerun()
-
-
-                leeftijds_categorie = st.multiselect(t('mp leeftijd'), 
-                                                     options = ['40-50', '50-60', '60-70'],
-                                                     default = st.session_state.leeftijd,
-                                                     placeholder = t('mp leeftijd')
-                                                    )
-
                 geslacht_keys = talen.loc['man':'anders'].index.tolist()
-                geslacht_kiezen = st.multiselect(t('mp geslacht'),
-                                                 options = geslacht_keys,
-                                                 default = st.session_state.geslacht,
-                                                 format_func =lambda x: talen.loc[x, st.session_state.taal],
-                                                 placeholder = t('mp geslacht')
-                                                )
+
 
 
     # rechter kolom
