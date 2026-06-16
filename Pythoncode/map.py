@@ -499,55 +499,114 @@ def main_app():
             
 
         
-            try:
-                
-                buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
+            #try:
+             #   
+              #  buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
                 
              
                 
-                buurten["kaart_id"] = buurten.index.astype(str)
-                buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
-                df["Wijk"] = df["Wijk"].astype(str).str.strip()
+               # buurten["kaart_id"] = buurten.index.astype(str)
+                #buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+                #df["Wijk"] = df["Wijk"].astype(str).str.strip()
                 
-                buurten = buurten.merge(
-                    df,
-                    left_on="Gebied",
-                    right_on="Wijk",
-                    how="left"
-                )
-                if st.session_state.variabelen:
-                    index = st.session_state.variabelen[0]
-                else:
-                    index = "mvc BMI 1"  
+                #buurten = buurten.merge(
+                 #   df,
+                  #  left_on="Gebied",
+                   # right_on="Wijk",
+                    #how="left"
+                #)
+                #if st.session_state.variabelen:
+                 #   index = st.session_state.variabelen[0]
+                 #   
+                #else:
+                 #   index = "mvc BMI 1"  
                         
-                fig2 = px.choropleth_mapbox(
-                    buurten,
-                    #geojson=buurten.__geo_interface__,
-                    #locations=buurten.index,
-                    geojson=buurten.set_index("kaart_id").__geo_interface__,
-                    locations="kaart_id",
+                #fig2 = px.choropleth_mapbox(
+                 #   buurten,
+                  #  #geojson=buurten.__geo_interface__,
+                   # #locations=buurten.index,
+                    #geojson=buurten.set_index("kaart_id").__geo_interface__,
+                    #locations="kaart_id",
                     #featureidkey="id", 
-                    color=index,
-                    hover_name ='Gebied',
-                    mapbox_style="carto-positron",
-                    zoom=9.5,
-                    center={"lat": 52.37, "lon": 4.89},
-                    opacity=0.45,
-                )
+                    #color=index,
+                    #hover_name ='Gebied',
+                    #mapbox_style="carto-positron",
+                    #zoom=9.5,
+                    #center={"lat": 52.37, "lon": 4.89},
+                    #opacity=0.45,
+                #)
 
-                fig2.update_layout(
-                    margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
-                )
+                #fig2.update_layout(
+                 #   margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
+                #)
 
-                st.plotly_chart(fig2, use_container_width=True)
+                #st.plotly_chart(fig2, use_container_width=True)
 
         
-            except Exception as e:
-                st.image('Pythoncode/amsterdam-map.jpg')
-                st.warning("Kaart kon niet geladen worden, fallback wordt gebruikt.")
-                st.error(str(e))
+            #except Exception as e:
+             #   st.image('Pythoncode/amsterdam-map.jpg')
+             #   st.warning("Kaart kon niet geladen worden, fallback wordt gebruikt.")
+              #  st.error(str(e))
     
-    #_____________________________________________________________________________________
+    try:
+    buurten = gpd.read_file(
+        "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling"
+    )
+
+    # Kies variabele voor kaart
+    geselecteerde_variabelen_kaart = st.multiselect(
+        t("mp kies v"),
+        options=var_keys,
+        default=st.session_state.variabelen,
+        format_func=lambda x: talen.loc[x, st.session_state.taal],
+        placeholder=t("menu co"),
+        key="variabelen_selectie_kaart"
+    )
+
+    if geselecteerde_variabelen_kaart:
+        index = geselecteerde_variabelen_kaart[0]
+    else:
+        index = "mvc BMI 1"
+
+    # ID maken vóór merge
+    buurten["kaart_id"] = buurten.index.astype(str)
+
+    # Namen opschonen
+    buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+    df["Wijk"] = df["Wijk"].astype(str).str.strip()
+
+    # Data koppelen
+    buurten = buurten.merge(
+        df,
+        left_on="Gebied",
+        right_on="Wijk",
+        how="left"
+    )
+
+    # Kaart maken
+    fig2 = px.choropleth_mapbox(
+        buurten,
+        geojson=buurten.set_index("kaart_id").__geo_interface__,
+        locations="kaart_id",
+        color=index,
+        hover_name="Gebied",
+        mapbox_style="carto-positron",
+        zoom=9.5,
+        center={"lat": 52.37, "lon": 4.89},
+        opacity=0.45,
+    )
+
+    fig2.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0)
+    )
+
+    st.plotly_chart(fig2, use_container_width=True)
+
+except Exception as e:
+    st.image("Pythoncode/amsterdam-map.jpg")
+    st.warning("Kaart kon niet geladen worden, fallback wordt gebruikt.")
+    st.error(str(e))
+    _____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
     
         elif st.session_state.pagina == 'grafiek':
