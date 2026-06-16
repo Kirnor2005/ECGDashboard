@@ -502,19 +502,13 @@ def main_app():
             try:
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-                geselecteerde_variabelen = st.multiselect(
-                    t('mp kies v'),
-                    options=var_keys,
-                    default=st.session_state.variabelen,
-                    format_func=lambda x: talen.loc[x, st.session_state.taal],
-                    placeholder=t('menu co'),
-                    key="variabelen_selectie"
-                )
-                #index = st.session_state.variabelen
-                if st.session_state.variabelen_selectie:
-                    index = st.session_state.variabelen_selectie[0]
+              
+               
+                if st.session_state.variabelen:
+                    index = st.session_state.variabelen[0]
                 else:
-                    index = "mvc BMI 1"  # standaardwaarde
+                    index = "mvc BMI 1"  
+                
                 buurten["kaart_id"] = buurten.index.astype(str)
                 buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
                 df["Wijk"] = df["Wijk"].astype(str).str.strip()
@@ -527,10 +521,10 @@ def main_app():
                 )
                 fig2 = px.choropleth_mapbox(
                     buurten,
-                    #geojson=buurten.__geo_interface__,
-                    #locations=buurten.index,
-                    geojson=buurten.set_index("kaart_id").__geo_interface__,
-                    locations="kaart_id",
+                    geojson=buurten.__geo_interface__,
+                    locations=buurten.index,
+                    #geojson=buurten.set_index("kaart_id").__geo_interface__,
+                    #locations="kaart_id",
                     featureidkey="id", 
                     color=index,
                     hover_name ='Gebied',
