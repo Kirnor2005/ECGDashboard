@@ -519,7 +519,7 @@ def main_app():
                 #    index = st.session_state.variabelen
                 #else:
                 #    index = "mvc BMI 1"  
-
+                st.session_state.variabelen = geselecteerde_variabelen
                 if len(st.session_state.variabelen) > 0: #st.session_state.variabelen geeft key in excel door (taal.csv) dus wss moet mapping gebruikt worden 
                     for i, variabele_key in enumerate(st.session_state.variabelen):
                         # uit het df .... wil je dat hij de rijen van st.ss.variabelen pakt
