@@ -368,7 +368,7 @@ def main_app():
         st.markdown("<div style='height: 6rem'></div>", unsafe_allow_html=True)
         
                      
-        with st.expander(t('mp filter'), expanded=False): # beide de grafiek en tabel kunnen in een st.container (?)
+        with st.sidebar(t('mp filter'), expanded=False): # beide de grafiek en tabel kunnen in een st.container (?)
 
             geselecteerde_wijken_grafiek = st.multiselect(
                 t('mp wijk g'),
