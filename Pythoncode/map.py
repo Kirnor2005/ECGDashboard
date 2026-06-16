@@ -529,7 +529,7 @@ def main_app():
                     buurten,
                     geojson=buurten.__geo_interface__,
                     locations=buurten.index,
-                    featureidkey="kaart_id", 
+                    featureidkey="id", 
                     color=index,
                     hover_name ='Gebied',
                     mapbox_style="carto-positron",
