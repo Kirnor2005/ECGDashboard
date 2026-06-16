@@ -502,10 +502,10 @@ def main_app():
             try:
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-                dataverwerkt = pd.read_csv("Excel bestanden/verwerkte_data_alles.csv", sep=";")
-                buurten["kaart_id"] = buurten.index.astype(str)
-                dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
-                buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+                
+                #buurten["kaart_id"] = buurten.index.astype(str)
+                #dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
+                #buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
                 keuze = st.selectbox(
                     "Kies welke index je op de kaart wilt zien",
                     ["mvc BMI 1",
@@ -520,7 +520,7 @@ def main_app():
                      "mvc Non-HDL 2",
                     ]
                 )
-                buurten = buurten.merge(dataverwerkt, left_on="Gebied", right_on="Wijk", how="left")
+                buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk", how="left")
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
