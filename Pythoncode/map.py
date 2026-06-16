@@ -561,7 +561,7 @@ def main_app():
                         mapbox_style="carto-positron",
                         zoom=9.5,
                         center={"lat": 52.37, "lon": 4.89},
-                        opacity=0.45
+                        opacity=0.45,
                         color_continuous_scale="Viridis",
                     )
           
