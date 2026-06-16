@@ -520,10 +520,9 @@ def main_app():
                 #else:
                 #    index = "mvc BMI 1"  
 
-                if st.session_state.variabelen:
+                if len(st.session_state.variabelen) != 0:
                     index = mapping.get(
-                        st.session_state.variabelen,
-                        "mvc BMI 1"  # fallback als sleutel niet bestaat
+                        st.session_state.variabelen
                     )
                 else:
                     index = "mvc BMI 1"
