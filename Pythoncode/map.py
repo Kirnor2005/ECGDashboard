@@ -563,37 +563,37 @@ def main_app():
         key="variabelen_selectie_kaart"
     )
 
-    if geselecteerde_variabelen_kaart:
-        index = geselecteerde_variabelen_kaart[0]
-    else:
-        index = "mvc BMI 1"
+        if geselecteerde_variabelen_kaart:
+            index = geselecteerde_variabelen_kaart[0]
+        else:
+            index = "mvc BMI 1"
 
-    # ID maken vóór merge
-    buurten["kaart_id"] = buurten.index.astype(str)
+        # ID maken vóór merge
+        buurten["kaart_id"] = buurten.index.astype(str)
 
-    # Namen opschonen
-    buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
-    df["Wijk"] = df["Wijk"].astype(str).str.strip()
+        # Namen opschonen
+        buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+        df["Wijk"] = df["Wijk"].astype(str).str.strip()
 
-    # Data koppelen
-    buurten = buurten.merge(
-        df,
-        left_on="Gebied",
-        right_on="Wijk",
-        how="left"
-    )
+        # Data koppelen
+        buurten = buurten.merge(
+            df,
+            left_on="Gebied",
+            right_on="Wijk",
+            how="left"
+        )
 
-    # Kaart maken
-    fig2 = px.choropleth_mapbox(
-        buurten,
-        geojson=buurten.set_index("kaart_id").__geo_interface__,
-        locations="kaart_id",
-        color=index,
-        hover_name="Gebied",
-        mapbox_style="carto-positron",
-        zoom=9.5,
-        center={"lat": 52.37, "lon": 4.89},
-        opacity=0.45,
+        # Kaart maken
+        fig2 = px.choropleth_mapbox(
+            buurten,
+            geojson=buurten.set_index("kaart_id").__geo_interface__,
+            locations="kaart_id",
+            color=index,
+            hover_name="Gebied",
+            mapbox_style="carto-positron",
+            zoom=9.5,
+            center={"lat": 52.37, "lon": 4.89},
+            opacity=0.45,
         )
 
         fig2.update_layout(
