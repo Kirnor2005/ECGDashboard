@@ -262,7 +262,28 @@ def centered_image(image_path, width=200):
 #"hartstikke-gezondweek.png"
 
 def login_screen():
+    with open(BASE_DIR / "Login_achtergrond.png", "rb") as img_file:
+        encoded_bg = base64.b64encode(img_file.read()).decode()
 
+    st.markdown(f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{encoded_bg}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+
+    [data-testid="stForm"] {{
+        max-width: 520px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        border-radius: 20px;
+    }}
+    </style>
+    """, unsafe_allow_html=True)
+    
     # beweegt mee met resize van tab
     st.markdown(""" 
     <style> 
@@ -287,14 +308,8 @@ def login_screen():
     </style> 
     """, unsafe_allow_html=True)
 
-    col_left, col_image, col_right = st.columns([1, 58, 1])
-    
-    with col_image:
-        centered_image(BASE_DIR / "hartstikke-gezondweek.png", width=200)
-        #centered_image("hartstikke-gezondweek.png", width=200)
-        st.write("")
-        st.write("") #zorgt ervoor dat er ruimte tussen het plaatje en de markdown + form is, ik hoop dat dit oke is. 
-        #             Het is namelijk wel minder dan eerst (niet veel tho) 
+    col_left, col_right = st.columns([59, 1])
+
     with col_right:
         with st.popover('⚙'):
             st.selectbox(t('mp taal'), options=talen_opties, key='taal')
@@ -314,10 +329,11 @@ def login_screen():
     )
 
     
+    st.markdown("<div style='height: 8rem'></div>", unsafe_allow_html=True)
     st.markdown(
-        f"<div class='login-title-text'>{t('li inloggen')}</div>",
-        unsafe_allow_html=True
-    )
+    f"<div class='login-title-text'>{t('li inloggen')}</div>",
+    unsafe_allow_html=True
+)
 
     with st.form("login_form"):
         email = st.text_input(t('li mail')) # "E-mail" veranderd naar t('li mail')
