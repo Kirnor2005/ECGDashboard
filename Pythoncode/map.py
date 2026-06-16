@@ -509,6 +509,10 @@ def main_app():
                     index = st.session_state.variabelen[0]
                 else:
                     index = "mvc BMI 1"  # standaardwaarde
+                buurten["kaart_id"] = buurten.index.astype(str)
+                buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+                dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
+                
                 buurten = buurten.merge(
                     dt,
                     left_on="Gebied",
