@@ -515,7 +515,7 @@ def main_app():
                     right_on="Wijk",
                     how="left"
                 )
-                if st.session_state.variabelen.len() != 0:
+                if len(st.session_state.variabelen) != 0:
                     index = st.session_state.variabelen
                 else:
                     index = "mvc BMI 1"  
