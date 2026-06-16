@@ -521,31 +521,54 @@ def main_app():
                 #    index = "mvc BMI 1"  
 
                 if len(st.session_state.variabelen) > 0: #st.session_state.variabelen geeft key in excel door (taal.csv) dus wss moet mapping gebruikt worden 
-                    geselecteerd = st.session_state.variabelen # uit het df .... wil je dat hij de rijen van st.ss.variabelen pakt
-                    index = mapping[geselecteerd]
+                    for i, variabele_key in enumerate(st.session_state.variabelen):
+                        # uit het df .... wil je dat hij de rijen van st.ss.variabelen pakt
+                        index = mapping[variabele_key]
+
+                        fig2 = px.choropleth_mapbox(
+                            buurten,
+                            #geojson=buurten.__geo_interface__,
+                            #locations=buurten.index,
+                            geojson=buurten.set_index("kaart_id").__geo_interface__,
+                            locations="kaart_id",
+                            #featureidkey="id", 
+                            color=index,
+                            hover_name ='Gebied',
+                            mapbox_style="carto-positron",
+                            zoom=9.5,
+                            center={"lat": 52.37, "lon": 4.89},
+                            opacity=0.45,
+                        )
+          
+                        fig2.update_layout(
+                            margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
+                        )
+
+                        st.plotly_chart(fig2, use_container_width=True)
+
                 else:
                     index = "mvc BMI 1"
                     
-                fig2 = px.choropleth_mapbox(
-                    buurten,
-                    #geojson=buurten.__geo_interface__,
-                    #locations=buurten.index,
-                    geojson=buurten.set_index("kaart_id").__geo_interface__,
-                    locations="kaart_id",
-                    #featureidkey="id", 
-                    color=index,
-                    hover_name ='Gebied',
-                    mapbox_style="carto-positron",
-                    zoom=9.5,
-                    center={"lat": 52.37, "lon": 4.89},
-                    opacity=0.45,
-                )
+                    fig2 = px.choropleth_mapbox(
+                        buurten,
+                        #geojson=buurten.__geo_interface__,
+                        #locations=buurten.index,
+                        geojson=buurten.set_index("kaart_id").__geo_interface__,
+                        locations="kaart_id",
+                        #featureidkey="id", 
+                        color=index,
+                        hover_name ='Gebied',
+                        mapbox_style="carto-positron",
+                        zoom=9.5,
+                        center={"lat": 52.37, "lon": 4.89},
+                        opacity=0.45,
+                    )
           
-                fig2.update_layout(
-                    margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
-                )
+                    fig2.update_layout(
+                        margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
+                    )
 
-                st.plotly_chart(fig2, use_container_width=True)
+                    st.plotly_chart(fig2, use_container_width=True)
 
         
             except Exception as e:
