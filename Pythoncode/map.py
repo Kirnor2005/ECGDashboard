@@ -506,28 +506,28 @@ def main_app():
                 #buurten["kaart_id"] = buurten.index.astype(str)
                 #dataverwerkt["Wijk"] = dataverwerkt["Wijk"].astype(str).str.strip()
                 #buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
-                keuze = st.selectbox(
-                    "Kies welke index je op de kaart wilt zien",
-                    ["mvc BMI 1",
-                     "mvc BMI 2",
-                     "mvc Cholesterol 1",
-                     "mvc Cholesterol 2",
-                     "mvc Bloedsuiker 1",
-                     "mvc Bloedsuiker 2",
-                     "mvc Bloeddruk (Bovendruk) 1",
-                     "mvc Bloeddruk (Bovendruk) 2",
-                     "mvc Non-HDL 1",
-                     "mvc Non-HDL 2",
-                    ]
-                )
-                buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk", how="left")
+                #keuze = st.selectbox(
+                    #"Kies welke index je op de kaart wilt zien",
+                    #["mvc BMI 1",
+                     #"mvc BMI 2",
+                     #"mvc Cholesterol 1",
+                     #"mvc Cholesterol 2",
+                     #"mvc Bloedsuiker 1",
+                     #"mvc Bloedsuiker 2",
+                     #"mvc Bloeddruk (Bovendruk) 1",
+                     #"mvc Bloeddruk (Bovendruk) 2",
+                     #"mvc Non-HDL 1",
+                     #"mvc Non-HDL 2",
+                    #]
+                #)
+                #buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk", how="left")
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
                     locations=buurten.index,
-                    featureidkey=["kaart_id"], 
+                    featureidkey='id', 
                     color=keuze,
-                    hover_name ='Wijk',
+                    hover_name ='Gebied',
                     mapbox_style="carto-positron",
                     zoom=9.5,
                     center={"lat": 52.37, "lon": 4.89},
