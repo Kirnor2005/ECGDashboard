@@ -500,21 +500,42 @@ def main_app():
 
         
             try:
+                
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-        
+                
+             
+                
+                buurten["kaart_id"] = buurten.index.astype(str)
+                buurten["Gebied"] = buurten["Gebied"].astype(str).str.strip()
+                df["Wijk"] = df["Wijk"].astype(str).str.strip()
+                
+                buurten = buurten.merge(
+                    df,
+                    left_on="Gebied",
+                    right_on="Wijk",
+                    how="left"
+                )
+                if st.session_state.variabelen:
+                    index = st.session_state.variabelen[0]
+                    
+                else:
+                    index = "mvc BMI 1"  
+                        
                 fig2 = px.choropleth_mapbox(
                     buurten,
-                    geojson=buurten.__geo_interface__,
-                    locations=buurten.index,
-                    featureidkey="id", 
-                    color=buurten.index,
-                    hover_name = 'Gebied',
+                    #geojson=buurten.__geo_interface__,
+                    #locations=buurten.index,
+                    geojson=buurten.set_index("kaart_id").__geo_interface__,
+                    locations="kaart_id",
+                    #featureidkey="id", 
+                    color=index,
+                    hover_name ='Gebied',
                     mapbox_style="carto-positron",
                     zoom=9.5,
                     center={"lat": 52.37, "lon": 4.89},
                     opacity=0.45,
                 )
-
+          
                 fig2.update_layout(
                     margin=dict(l=0, r=0, t=0, b=0) #verwijderd marges (l=left, r=right, t=top, b=bottom), als je het weer naar het origineel wil hebben zonder dat de bovenkant weer ver van de titel af staat doe: t=0, b=140, toegevoegd omdat ik de kaart op de grafiek wou hebben met zo min mogelijk marge.
                 )
