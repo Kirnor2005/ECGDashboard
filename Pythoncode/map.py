@@ -610,24 +610,24 @@ def main_app():
     _____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
     
-        elif st.session_state.pagina == 'grafiek':
+elif st.session_state.pagina == 'grafiek':
     
-            st.title(t('gr tit g'))
+    st.title(t('gr tit g'))
     
             # terug knop
-            if st.button(t('gr but terug')):
+    if st.button(t('gr but terug')):
     
-                st.session_state.pagina = 'kaart'
+        st.session_state.pagina = 'kaart'
     
-                st.rerun()
+        st.rerun()
     
             # geselecteerde data
-            filtered_df_graf = df[
-                df['Wijk'].isin(st.session_state.wijken_graf)
+    filtered_df_graf = df[
+        df['Wijk'].isin(st.session_state.wijken_graf)
             ]
     
             # grafieken
-            if len(st.session_state.variabelen) > 0: 
+    if len(st.session_state.variabelen) > 0: 
     
                 grafiek_cols = st.columns(len(st.session_state.variabelen)) # zorgt ervoor dat er zoveel grafieken naast elkaar komen als er gekozen zijn dus als 
                                                                             # er 4 variabelen zijn gekozen heb je 4 kolommen (4 grafieken naast elkaar
