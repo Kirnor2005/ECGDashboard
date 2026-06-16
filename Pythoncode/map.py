@@ -521,6 +521,7 @@ def main_app():
                     #]
                 #)
                 #buurten = buurten.merge(df, left_on="Gebied", right_on="Wijk", how="left")
+                index = st.session_state.variabelen
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
