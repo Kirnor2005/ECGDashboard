@@ -526,7 +526,7 @@ def main_app():
                     #locations=buurten.index,
                     geojson=buurten.set_index("kaart_id").__geo_interface__,
                     locations="kaart_id",
-                    featureidkey="id", 
+                    #featureidkey="id", 
                     color=index,
                     hover_name ='Gebied',
                     mapbox_style="carto-positron",
