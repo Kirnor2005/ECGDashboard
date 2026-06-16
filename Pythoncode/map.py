@@ -502,11 +502,17 @@ def main_app():
             try:
                 
                 buurten = gpd.read_file('https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling')
-                
-               
+                geselecteerde_variabelen = st.multiselect(
+                    t('mp kies v'),
+                    options=var_keys,
+                    default=st.session_state.variabelen,
+                    format_func=lambda x: talen.loc[x, st.session_state.taal],
+                    placeholder=t('menu co'),
+                    key="variabelen_selectie"
+                )
                 #index = st.session_state.variabelen
-                if st.session_state.variabelen:
-                    index = st.session_state.variabelen[0]
+                if st.session_state.variabelen_selectie:
+                    index = st.session_state.variabelen_selectie[0]
                 else:
                     index = "mvc BMI 1"  # standaardwaarde
                 buurten["kaart_id"] = buurten.index.astype(str)
