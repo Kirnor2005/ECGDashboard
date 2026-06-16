@@ -526,7 +526,7 @@ def main_app():
                     geojson=buurten.__geo_interface__,
                     locations=buurten.index,
                     featureidkey='id', 
-                    color=keuze,
+                    color=buurten.index,
                     hover_name ='Gebied',
                     mapbox_style="carto-positron",
                     zoom=9.5,
