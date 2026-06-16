@@ -517,8 +517,8 @@ def main_app():
                 )
                 if st.session_state.variabelen:
                     index = st.session_state.variabelen[0]
-                    else:
-                        index = "mvc BMI 1"  
+                else:
+                    index = "mvc BMI 1"  
                         
                 fig2 = px.choropleth_mapbox(
                     buurten,
