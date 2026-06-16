@@ -549,6 +549,20 @@ def main_app():
               #  st.error(str(e))
     
     try:
+    
+        buurten = gpd.read_file(
+            "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling"
+        )
+
+    # Kies variabele voor kaart
+        geselecteerde_variabelen_kaart = st.multiselect(
+            t("mp kies v"),
+            options=var_keys,
+            default=st.session_state.variabelen,
+            format_func=lambda x: talen.loc[x, st.session_state.taal],
+            placeholder=t("menu co"),
+            key="variabelen_selectie_kaart"
+    try:
     buurten = gpd.read_file(
         "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=INDELING_GEBIED&THEMA=gebiedsindeling"
     )
@@ -594,18 +608,19 @@ def main_app():
         zoom=9.5,
         center={"lat": 52.37, "lon": 4.89},
         opacity=0.45,
-    )
+        )
 
-    fig2.update_layout(
+        fig2.update_layout(
         margin=dict(l=0, r=0, t=0, b=0)
-    )
+        )
 
-    st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, use_container_width=True)
 
-except Exception as e:
-    st.image("Pythoncode/amsterdam-map.jpg")
-    st.warning("Kaart kon niet geladen worden, fallback wordt gebruikt.")
-    st.error(str(e))
+    except Exception as e:
+        st.image("Pythoncode/amsterdam-map.jpg")
+        st.warning("Kaart kon niet geladen worden, fallback wordt gebruikt.")
+        st.error(str(e)))
+
     _____________________________________________________________________________________
         # pagina 2 = grafieken (tijdelijke visualisatie, Nina mag alles netjes gaan neerzetten :)) miss is het fijn om te kunnen wisselen tussen grafiek en tabel met 1 klik door gebruik te maken van pagina's zoals beschreven in het 2e hoorcollege op het JMH
     
