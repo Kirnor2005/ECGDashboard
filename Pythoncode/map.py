@@ -520,10 +520,8 @@ def main_app():
                 #else:
                 #    index = "mvc BMI 1"  
 
-                if len(st.session_state.variabelen) > 0:
-                    for i, variabele_key in enumerate(st.session_state.variabelen):
-                        variabele = mapping[variabele_key]
-                        index = variabele
+                if len(st.session_state.variabelen) > 0: #st.session_state.variabelen geeft key in excel door (taal.csv) dus wss moet mapping gebruikt worden 
+                    index = buurten[st.session_state.variabelen]
                 else:
                     index = "mvc BMI 1"
                     
