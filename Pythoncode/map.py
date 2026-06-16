@@ -509,6 +509,12 @@ def main_app():
                     index = st.session_state.variabelen[0]
                 else:
                     index = "mvc BMI 1"  # standaardwaarde
+                buurten = buurten.merge(
+                    dt,
+                    left_on="Gebied",
+                    right_on="Wijk",
+                    how="left"
+                )
                 fig2 = px.choropleth_mapbox(
                     buurten,
                     geojson=buurten.__geo_interface__,
