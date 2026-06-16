@@ -520,10 +520,10 @@ def main_app():
                 #else:
                 #    index = "mvc BMI 1"  
 
-                if len(st.session_state.variabelen) != 0:
-                    index = mapping.get(
-                        st.session_state.variabelen
-                    )
+                if len(st.session_state.variabelen) > 0:
+                    for i, variabele_key in enumerate(st.session_state.variabelen):
+                        variabele = mapping[variabele_key]
+                        index = variabele
                 else:
                     index = "mvc BMI 1"
                     
