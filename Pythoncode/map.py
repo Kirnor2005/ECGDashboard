@@ -554,7 +554,7 @@ def main_app():
     )
 
     # Kies variabele voor kaart
-    geselecteerde_variabelen_kaart = st.multiselect(
+        geselecteerde_variabelen_kaart = st.multiselect(
         t("mp kies v"),
         options=var_keys,
         default=st.session_state.variabelen,
