@@ -521,7 +521,7 @@ def main_app():
                 #    index = "mvc BMI 1"  
 
                 if len(st.session_state.variabelen) > 0: #st.session_state.variabelen geeft key in excel door (taal.csv) dus wss moet mapping gebruikt worden 
-                    index = buurten[st.session_state.variabelen]
+                    index = buurten[mapping[st.session_state.variabelen]] # uit het df .... wil je dat hij de rijen van st.ss.variabelen pakt
                 else:
                     index = "mvc BMI 1"
                     
